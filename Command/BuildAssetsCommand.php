@@ -54,7 +54,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
         $this->processFiles($fs, "{$resource}public/js/", $assets["js"]);
 
         $img = $this->processFolders(realpath($this->package . $assets["images"]));
-        $this->processFiles($fs, "{$resource}public/images/", $img);
+        $this->processFiles($fs, "{$resource}public/img/", $img);
 
         foreach ($assets["plugins"] as $plugin) {
             $plg = $this->processFolders(realpath($this->package . $plugin));
