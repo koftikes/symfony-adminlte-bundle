@@ -1,0 +1,50 @@
+package:
+  path: "/../vendor/almasaeed2010/adminlte"
+
+js:
+  main:
+    "AdminLTE.min.js": "/dist/js/app.min.js"
+
+css:
+  main:
+    - "/dist/css/AdminLTE.min.css"
+  skins:
+    - "/dist/css/skins/_all-skins.min.css"
+    - "/dist/css/skins/skin-black.min.css"
+    - "/dist/css/skins/skin-black-light.min.css"
+    - "/dist/css/skins/skin-blue.min.css"
+    - "/dist/css/skins/skin-blue-light.min.css"
+    - "/dist/css/skins/skin-green.min.css"
+    - "/dist/css/skins/skin-green-light.min.css"
+    - "/dist/css/skins/skin-purple.min.css"
+    - "/dist/css/skins/skin-purple-light.min.css"
+    - "/dist/css/skins/skin-red.min.css"
+    - "/dist/css/skins/skin-red-light.min.css"
+    - "/dist/css/skins/skin-yellow.min.css"
+    - "/dist/css/skins/skin-yellow-light.min.css"
+
+images: "/dist/img"
+
+plugins:
+  - "/plugins/bootstrap-slider"
+  - "/plugins/chartjs"
+  - "/plugins/colorpicker"
+  - "/plugins/datepicker"
+  - "/plugins/daterangepicker"
+  - "/plugins/timepicker"
+  - "/plugins/fastclick"
+  - "/plugins/fullcalendar"
+  - "/plugins/input-mask"
+  - "/plugins/jvectormap"
+  - "/plugins/morris"
+  - "/plugins/select2"
+  - "/plugins/sparkline"
+  - "/plugins/bootstrap-wysihtml5"
+  - "/plugins/ckeditor"
+  - "/plugins/datatables"
+  - "/plugins/flot"
+  - "/plugins/iCheck"
+  - "/plugins/ionslider"
+  - "/plugins/knob"
+  - "/plugins/pace"
+  - "/plugins/slimScroll"
