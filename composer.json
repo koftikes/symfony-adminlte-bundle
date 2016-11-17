@@ -1,0 +1,30 @@
+{
+    "name": "sbs/symfony-adminlte-bundle",
+    "description": "Symfony2 Project AdminLTE Integration Bundle",
+    "homepage": "https://github.com/koftikes/symfony-adminlte-bundle",
+    "keywords": ["symfony", "adminlte"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/koftikes/symfony-adminlte-bundle/issues"
+    },
+    "authors": [
+        {
+            "name": "Konstantin Litvinov",
+            "email": "koftikes@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "symfony/framework-bundle": "~2.6|~3.0",
+        "symfony/assetic-bundle": ">=2.8",
+        "components/jquery": "^2.2",
+        "components/jqueryui": "^1.12",
+        "components/bootstrap": "^3.3",
+        "components/font-awesome": "^4.7",
+        "almasaeed2010/adminlte": "^2.3"
+    },
+    "autoload": {
+        "psr-4": { "SbS\\AdminLTEBundle\\": "" }
+    }
+}
