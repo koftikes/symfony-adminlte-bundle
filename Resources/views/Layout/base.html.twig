@@ -43,7 +43,9 @@
                 {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            {% block admin_lte_navbar %}{% endblock %}
+                            {% block admin_lte_navbar %}
+                                {{ UserAccount() }}
+                            {% endblock %}
                         </ul>
                     </div>
                 {% endif %}
