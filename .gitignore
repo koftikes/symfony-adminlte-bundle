@@ -1,19 +1,16 @@
-# phpstorm project files
+# projects files
 .idea
-
-# netbeans project files
 nbproject
-
-# zend studio for eclipse project files
 .buildpath
 .project
 .settings
 
 # windows thumbnail cache
 Thumbs.db
-
 # Mac DS_Store Files
 .DS_Store
-
 # composer itself is not needed
 composer.phar
+
+# project public files build with assetc command
+/Resources/public

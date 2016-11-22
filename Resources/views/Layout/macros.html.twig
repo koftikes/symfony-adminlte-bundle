@@ -15,15 +15,6 @@
     </div>
 {% endmacro %}
 
-{% macro avatar(image, alt, class) %}
-    {% if image %}
-        <img src="{{ asset(image) }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}"/>
-    {% else %}
-        <img src="{{ asset('bundles/sbsadminlte/img/avatar.png') }}" class="{{ class|default('img-circle') }}"
-             alt="{{ alt }}"/>
-    {% endif %}
-{% endmacro %}
-
 {% macro menu_item(item) %}
     {% if item.route or item.hasChildren %}
         <li id="{{ item.identifier }}"
