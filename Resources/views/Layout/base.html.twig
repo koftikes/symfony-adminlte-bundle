@@ -44,7 +44,8 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             {% block admin_lte_navbar %}
-                                {{ UserAccount() }}
+                                {{ navbar_tasks() }}
+                                {{ navbar_user_account() }}
                             {% endblock %}
                         </ul>
                     </div>
