@@ -4,16 +4,19 @@ namespace SbS\AdminLTEBundle\Twig;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
-use SbS\AdminLTEBundle\Model\UserInterface;
-use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class NavBarExtension extends \Twig_Extension
 {
-    protected $dispatcher;
+    /**
+     * @var $dispatcher EventDispatcherInterface
+     */
+    private $dispatcher;
 
-    public function __construct(TraceableEventDispatcher $dispatcher)
+    public function __construct(ContainerInterface $container)
     {
-        $this->dispatcher = $dispatcher;
+        $this->dispatcher = $container->get("event_dispatcher");
     }
 
     public function getFunctions()
@@ -42,6 +45,8 @@ class NavBarExtension extends \Twig_Extension
         if ($this->checkListener(ThemeEvents::TASKS) == false) {
             return "";
         }
+
+        /** @var TaskListEvent $tasksEvent */
         $tasksEvent = $this->dispatcher->dispatch(ThemeEvents::TASKS, new TaskListEvent());
 
         return $environment->render('SbSAdminLTEBundle:NavBar:tasks.html.twig', [
@@ -62,14 +67,10 @@ class NavBarExtension extends \Twig_Extension
             return "";
         }
 
+        /** @var UserEvent $userEvent */
         $userEvent = $this->dispatcher->dispatch(ThemeEvents::USER, new UserEvent());
-        $user      = $userEvent->getUser();
 
-        if (!($user instanceof UserInterface)) {
-            throw new \Exception("User should implement UserInterface class.");
-        }
-
-        return $environment->render('SbSAdminLTEBundle:NavBar:user.html.twig', ['user' => $user]);
+        return $environment->render('SbSAdminLTEBundle:NavBar:user.html.twig', ['user' => $userEvent->getUser()]);
     }
 
 
