@@ -1,23 +1,16 @@
 <?php
 namespace SbS\AdminLTEBundle\EventListener;
 
-use SbS\AdminLTEBundle\Model\UserInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use SbS\AdminLTEBundle\Event\UserEvent;
+use SbS\AdminLTEBundle\Model\Demo\UserModel;
 
 class UserEventListener
 {
-    private $token_storage;
-
-    public function __construct(TokenStorageInterface $token_storage)
+    public function onShowUser(UserEvent $event)
     {
-        $this->token_storage = $token_storage;
-    }
+        $user = new UserModel("demo_user");
+        $user->setMemberSince(new \DateTime())->setUsername('Demo User');
 
-    public function getUser()
-    {
-        /** @var UserInterface $user */
-        $user = $this->token_storage->getToken()->getUser();
-
-        return $user;
+        $event->setUser($user);
     }
 }

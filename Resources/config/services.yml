@@ -1,18 +1,19 @@
 services:
-#    sbs_adminlte.example:
-#        class: SbS\AdminLTEBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-
-    sbs_adminlte.user_listener:
-        class: SbS\AdminLTEBundle\EventListener\UserEventListener
-        arguments:
-            - "@security.token_storage"
-        tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: getUser }
-
-#twig extensions
+#Twig Extensions
     sbs_adminlte.twig.user_extension:
-        class: SbS\AdminLTEBundle\Twig\UserExtension
-        arguments: ["@sbs_adminlte.user_listener"]
+        class: SbS\AdminLTEBundle\Twig\NavBarExtension
+        arguments: ["@event_dispatcher"]
         tags:
             - { name: twig.extension }
+
+
+## Demo Event Listeners uncoment
+#    sbs_adminlte.user_listener:
+#        class: SbS\AdminLTEBundle\EventListener\UserEventListener
+#        tags:
+#            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
+#
+#    sbs_adminlte.tasks_listener:
+#        class: SbS\AdminLTEBundle\EventListener\TaskListListener
+#        tags:
+#            - { name: kernel.event_listener, event: sbs.admin_lte.tasks, method: onListTasks }
