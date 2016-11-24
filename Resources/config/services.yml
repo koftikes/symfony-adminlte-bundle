@@ -2,7 +2,7 @@ services:
 #Twig Extensions
     sbs_adminlte.twig.user_extension:
         class: SbS\AdminLTEBundle\Twig\NavBarExtension
-        arguments: ["@service_container"]
+        arguments: ["@event_dispatcher"]
         tags:
             - { name: twig.extension }
 
