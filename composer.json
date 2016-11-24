@@ -20,7 +20,7 @@
         "symfony/assetic-bundle": ">=2.8",
         "components/jquery": "^2.2",
         "components/jqueryui": "^1.12",
-        "twbs/bootstrap": "^3.3",
+        "components/bootstrap": "^3.3",
         "components/font-awesome": "^4.7",
         "almasaeed2010/adminlte": "^2.3"
     },

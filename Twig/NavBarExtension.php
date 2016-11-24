@@ -4,7 +4,6 @@ namespace SbS\AdminLTEBundle\Twig;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class NavBarExtension extends \Twig_Extension
@@ -14,9 +13,9 @@ class NavBarExtension extends \Twig_Extension
      */
     private $dispatcher;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(EventDispatcherInterface $dispatcher)
     {
-        $this->dispatcher = $container->get("event_dispatcher");
+        $this->dispatcher = $dispatcher;
     }
 
     public function getFunctions()
