@@ -1,14 +1,27 @@
 AdminLTEBundle
 ==============
 
-AdminLTE Bundle based on the AdminLTE Template for easy integration into symfony.
-This bundle integrates several commonly used JavaScripts and the awesome [AdminLTE Template](https://github.com/almasaeed2010/AdminLTE).
+AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony.
+This bundle integrates several commonly used JavaScripts and Font-Awesome.
 
 ## Installation
 
-Installation using composer is really easy: this command will add `"sbs/symfony-adminlte-bundle"` to your composer.json and will download the bundle:
+Installation using composer is really easy:
+Configure components directory in `composer.json`:
+
+```json
+"config": {
+    "bin-dir": "bin",
+    "component-dir": "web/components",
+    "component-baseurl": "/components"
+},
+```
+
+After that run the next composer command to add and download bundle `sbs/symfony-adminlte-bundle` to your composer.json:
 
     composer require sbs/symfony-adminlte-bundle
+
+## Configurations
 
 Enable the bundle in your kernel:
 
@@ -25,7 +38,7 @@ public function registerBundles()
 }
 ```
 
-Configure composer.json  to install AdminLTE assets into bundle public directory.
+Configure composer.json to install AdminLTE assets into bundle public directory.
 
 _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets`_
 
@@ -44,16 +57,26 @@ _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\Scrip
 },
 ```
 
-After that install assets (preferably using symlink method but hardcopy works as well)...
+Add support bundle services in `app/config/config.yml`:
 
-    php app/console assets:install --symlink
+    imports:
+        # ...
+        - { resource: "@SbSAdminLTEBundle/Resources/config/services.yml" }
+
+To apply bootstrap theme form to all forms of your application, use the following configuration under `[twig]` section:
+
+    # Twig Configuration
+    twig:
+        # ...
+        form:
+            resources: ['bootstrap_3_layout.html.twig']
 
 ### Symfony 2.8 notice
-This bundle requires assetic, but it isn't shipped with symfony anymore since version 2.8. To install assetic, follow these steps:
 
-    php composer require symfony/assetic-bundle
+_Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
 
-Enable the bundle in your kernel:
+Assetic will be installed as require bundle and you should enable bundle in your kernel:
+
 ```php
 <?php
 // app/AppKernel.php
@@ -70,19 +93,14 @@ Add the following lines at `app/config/config.yml`:
 
     # Assetic Configuration
     assetic:
-        # ...
+        debug:          "%kernel.debug%"
         use_controller: false
         bundles:        ["SbSAdminLTEBundle"]
+        filters:
+            cssrewrite: ~
+            lessphp: ~
 
-### Changing default values from templates
-To apply form theme to all the forms of your application, use the following configuration under `[twig]` section:
-
-    # Twig Configuration
-    twig:
-        # ...
-        form:
-            resources: ['bootstrap_3_layout.html.twig']
-            # resources: ['bootstrap_3_horizontal_layout.html.twig']
+### Changing default values template
 
 If you want to change any default value as for example `skin` all you need to do is define the same at `app/config/config.yml` under `[twig]` section.
 See example below:
@@ -113,4 +131,4 @@ There are a few values you could change for sure without need to touch anything 
 
 That's all. Enjoy.
 
- [1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
+[1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
