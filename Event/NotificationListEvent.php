@@ -1,24 +1,24 @@
 <?php
 namespace SbS\AdminLTEBundle\Event;
 
-use SbS\AdminLTEBundle\Model\TaskInterface;
+use SbS\AdminLTEBundle\Model\NotificationInterface;
 use Symfony\Component\EventDispatcher\Event;
 
-class TaskListEvent extends Event
+class NotificationListEvent extends Event
 {
     /** @var array */
-    protected $tasks = [];
+    protected $notifications = [];
 
     /** @var int */
     protected $total = 0;
 
     /**
-     * @param TaskInterface $task
+     * @param NotificationInterface $notificationInterface
      * @return $this
      */
-    public function addTask(TaskInterface $task)
+    public function addNotification(NotificationInterface $notificationInterface)
     {
-        $this->tasks[] = $task;
+        $this->notifications[] = $notificationInterface;
 
         return $this;
     }
@@ -26,20 +26,17 @@ class TaskListEvent extends Event
     /**
      * @return array
      */
-    public function getTasks()
+    public function getNotifications()
     {
-        return $this->tasks;
+        return $this->notifications;
     }
 
     /**
      * @param $total
-     * @return $this
      */
     public function setTotal($total)
     {
         $this->total = $total;
-
-        return $this;
     }
 
     /**
@@ -47,6 +44,6 @@ class TaskListEvent extends Event
      */
     public function getTotal()
     {
-        return $this->total == 0 ? count($this->tasks) : $this->total;
+        return $this->total == 0 ? count($this->notifications) : $this->total;
     }
 }

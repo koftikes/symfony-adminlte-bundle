@@ -5,45 +5,35 @@ use SbS\AdminLTEBundle\Model\UserInterface;
 
 class UserModel implements UserInterface
 {
-    /**
-     * @var integer
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $username;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $avatar;
 
-    /**
-     * @var \DateTime
-     */
+    /** @var \DateTime */
     private $memberSince;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $title;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $info;
 
 
+    /**
+     * UserModel constructor.
+     * @param $username
+     */
     function __construct($username)
     {
-        $this->username    = $username;
+        $this->username = $username;
     }
 
     /**

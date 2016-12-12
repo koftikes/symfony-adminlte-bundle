@@ -10,33 +10,17 @@ use SbS\AdminLTEBundle\Model\TaskInterface;
  */
 class TaskModel implements TaskInterface
 {
-    /**
-     *  Colors of tasks
-     */
-    const COLOR_AQUA   = 'aqua';
-    const COLOR_GREEN  = 'green';
-    const COLOR_RED    = 'red';
-    const COLOR_YELLOW = 'yellow';
-
-    /**
-     * @var integer
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $title;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $progress;
 
-    /**
-     * @var string
-     */
-    private $color = self::COLOR_AQUA;
+    /** @var string */
+    private $color = self::COLOR_BLUE;
 
     /**
      * TaskModel constructor.

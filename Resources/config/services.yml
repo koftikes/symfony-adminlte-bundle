@@ -7,13 +7,18 @@ services:
             - { name: twig.extension }
 
 
-## Demo Event Listeners uncoment
+## Demo Event Listeners uncomment for demo
 #    sbs_adminlte.user_listener:
 #        class: SbS\AdminLTEBundle\EventListener\UserEventListener
 #        tags:
 #            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
 #
 #    sbs_adminlte.tasks_listener:
-#        class: SbS\AdminLTEBundle\EventListener\TaskListListener
+#        class: SbS\AdminLTEBundle\EventListener\TaskListEventListener
 #        tags:
 #            - { name: kernel.event_listener, event: sbs.admin_lte.tasks, method: onListTasks }
+#
+#    sbs_adminlte.notifications_listener:
+#        class: SbS\AdminLTEBundle\EventListener\NotificationListEventListener
+#        tags:
+#            - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
