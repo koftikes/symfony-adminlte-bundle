@@ -6,6 +6,9 @@ use SbS\AdminLTEBundle\Model\Demo\UserModel;
 
 class UserEventListener
 {
+    /**
+     * @param UserEvent $event
+     */
     public function onShowUser(UserEvent $event)
     {
         $user = new UserModel("demo_user");

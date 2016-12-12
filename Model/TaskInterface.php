@@ -4,6 +4,14 @@ namespace SbS\AdminLTEBundle\Model;
 interface TaskInterface
 {
     /**
+     *  Colors of tasks
+     */
+    const COLOR_BLUE   = 'blue';
+    const COLOR_GREEN  = 'green';
+    const COLOR_RED    = 'red';
+    const COLOR_YELLOW = 'yellow';
+
+    /**
      * Should return Task identifier
      * @return integer
      */

@@ -1,6 +1,7 @@
 <?php
 namespace SbS\AdminLTEBundle\Twig;
 
+use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
@@ -22,6 +23,11 @@ class NavBarExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction(
+                'navbar_notifications',
+                [$this, 'NotificationsFunction'],
+                ['is_safe' => ['html'], 'needs_environment' => true]
+            ),
+            new \Twig_SimpleFunction(
                 'navbar_tasks',
                 [$this, 'TasksFunction'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
@@ -39,6 +45,29 @@ class NavBarExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * @param \Twig_Environment $environment
+     * @return string
+     */
+    public function NotificationsFunction(\Twig_Environment $environment)
+    {
+        if ($this->checkListener(ThemeEvents::NOTICES) == false) {
+            return "";
+        }
+
+        /** @var NotificationListEvent $noticesEvent */
+        $noticesEvent = $this->dispatcher->dispatch(ThemeEvents::NOTICES, new NotificationListEvent());
+
+        return $environment->render('SbSAdminLTEBundle:NavBar:notifications.html.twig', [
+            'notifications' => $noticesEvent->getNotifications(),
+            'total'         => $noticesEvent->getTotal(),
+        ]);
+    }
+
+    /**
+     * @param \Twig_Environment $environment
+     * @return string
+     */
     public function TasksFunction(\Twig_Environment $environment)
     {
         if ($this->checkListener(ThemeEvents::TASKS) == false) {
@@ -58,7 +87,6 @@ class NavBarExtension extends \Twig_Extension
     /**
      * @param \Twig_Environment $environment
      * @return string
-     * @throws \Exception
      */
     public function UserAccountFunction(\Twig_Environment $environment)
     {
