@@ -57,20 +57,6 @@ _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\Scrip
 },
 ```
 
-Add support bundle services in `app/config/config.yml`:
-
-    imports:
-        # ...
-        - { resource: "@SbSAdminLTEBundle/Resources/config/services.yml" }
-
-To apply bootstrap theme form to all forms of your application, use the following configuration under `[twig]` section:
-
-    # Twig Configuration
-    twig:
-        # ...
-        form:
-            resources: ['bootstrap_3_layout.html.twig']
-
 ### Symfony 2.8 notice
 
 _Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
@@ -89,16 +75,6 @@ public function registerBundles()
     );
 }
 ```
-Add the following lines at `app/config/config.yml`:
-
-    # Assetic Configuration
-    assetic:
-        debug:          "%kernel.debug%"
-        use_controller: false
-        bundles:        ["SbSAdminLTEBundle"]
-        filters:
-            cssrewrite: ~
-            lessphp: ~
 
 ### Changing default values template
 
@@ -111,7 +87,7 @@ See example below:
         globals:
             admin_lte_skin: skin-blue
         # ...
-            
+
 You could also define those values at `app/config/parameters.yml`:
 
     app.skin: skin-blue
