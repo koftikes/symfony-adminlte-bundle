@@ -1,8 +1,13 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Model\Demo;
 
 use SbS\AdminLTEBundle\Model\UserInterface;
 
+/**
+ * Class UserModel
+ * @package SbS\AdminLTEBundle\Model\Demo
+ */
 class UserModel implements UserInterface
 {
     /** @var integer */

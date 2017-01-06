@@ -1,12 +1,12 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Model\Demo;
 
 use SbS\AdminLTEBundle\Model\TaskInterface;
 
 /**
  * Class TaskModel
- *
- * @package Avanzu\AdminThemeBundle\Model
+ * @package SbS\AdminLTEBundle\Model\Demo
  */
 class TaskModel implements TaskInterface
 {

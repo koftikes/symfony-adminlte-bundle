@@ -1,6 +1,11 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Model;
 
+/**
+ * Interface TaskInterface
+ * @package SbS\AdminLTEBundle\Model
+ */
 interface TaskInterface
 {
     /**
