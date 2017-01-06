@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\Event;
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * Class NotificationListEvent
+ * @package SbS\AdminLTEBundle\Event
+ */
 class NotificationListEvent extends Event
 {
     /** @var array */

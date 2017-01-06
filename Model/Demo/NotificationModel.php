@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\Model\Demo;
 
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 
+/**
+ * Class NotificationModel
+ * @package SbS\AdminLTEBundle\Model\Demo
+ */
 class NotificationModel implements NotificationInterface
 {
     /** @var integer */
@@ -44,9 +48,8 @@ class NotificationModel implements NotificationInterface
      */
     public function getId()
     {
-        return $this->message;
+        return $this->id;
     }
-
 
     /**
      * @param $message

@@ -1,6 +1,11 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Model;
 
+/**
+ * Interface UserInterface
+ * @package SbS\AdminLTEBundle\Model
+ */
 interface UserInterface
 {
     /**

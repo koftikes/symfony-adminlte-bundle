@@ -5,35 +5,24 @@ use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class NavBarExtension extends \Twig_Extension
+class NavBarExtension extends AdminLTE_Extension
 {
-    /**
-     * @var $dispatcher EventDispatcherInterface
-     */
-    private $dispatcher;
-
-    public function __construct(EventDispatcherInterface $dispatcher)
-    {
-        $this->dispatcher = $dispatcher;
-    }
-
     public function getFunctions()
     {
         return [
             new \Twig_SimpleFunction(
-                'navbar_notifications',
+                'nav_bar_notifications',
                 [$this, 'NotificationsFunction'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new \Twig_SimpleFunction(
-                'navbar_tasks',
+                'nav_bar_tasks',
                 [$this, 'TasksFunction'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new \Twig_SimpleFunction(
-                'navbar_user_account',
+                'nav_bar_user_account',
                 [$this, 'UserAccountFunction'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
@@ -56,7 +45,7 @@ class NavBarExtension extends \Twig_Extension
         }
 
         /** @var NotificationListEvent $noticesEvent */
-        $noticesEvent = $this->dispatcher->dispatch(ThemeEvents::NOTICES, new NotificationListEvent());
+        $noticesEvent = $this->getDispatcher()->dispatch(ThemeEvents::NOTICES, new NotificationListEvent());
 
         return $environment->render('SbSAdminLTEBundle:NavBar:notifications.html.twig', [
             'notifications' => $noticesEvent->getNotifications(),
@@ -75,7 +64,7 @@ class NavBarExtension extends \Twig_Extension
         }
 
         /** @var TaskListEvent $tasksEvent */
-        $tasksEvent = $this->dispatcher->dispatch(ThemeEvents::TASKS, new TaskListEvent());
+        $tasksEvent = $this->getDispatcher()->dispatch(ThemeEvents::TASKS, new TaskListEvent());
 
         return $environment->render('SbSAdminLTEBundle:NavBar:tasks.html.twig', [
             'tasks' => $tasksEvent->getTasks(),
@@ -95,7 +84,7 @@ class NavBarExtension extends \Twig_Extension
         }
 
         /** @var UserEvent $userEvent */
-        $userEvent = $this->dispatcher->dispatch(ThemeEvents::USER, new UserEvent());
+        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::USER, new UserEvent());
 
         return $environment->render('SbSAdminLTEBundle:NavBar:user.html.twig', ['user' => $userEvent->getUser()]);
     }
@@ -122,14 +111,5 @@ class NavBarExtension extends \Twig_Extension
                 'class' => $class,
                 'alt'   => $alt,
             ]);
-    }
-
-    /**
-     * @param $listener
-     * @return bool
-     */
-    private function checkListener($listener)
-    {
-        return $this->dispatcher->hasListeners($listener);
     }
 }

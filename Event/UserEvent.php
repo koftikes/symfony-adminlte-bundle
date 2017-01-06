@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\Event;
 use SbS\AdminLTEBundle\Model\UserInterface;
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * Class UserEvent
+ * @package SbS\AdminLTEBundle\Event
+ */
 class UserEvent extends Event
 {
     /** @var UserInterface */

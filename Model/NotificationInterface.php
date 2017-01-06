@@ -1,6 +1,11 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Model;
 
+/**
+ * Interface NotificationInterface
+ * @package SbS\AdminLTEBundle\Model
+ */
 interface NotificationInterface
 {
     /**

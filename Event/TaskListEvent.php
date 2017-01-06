@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\Event;
 use SbS\AdminLTEBundle\Model\TaskInterface;
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * Class TaskListEvent
+ * @package SbS\AdminLTEBundle\Event
+ */
 class TaskListEvent extends Event
 {
     /** @var array */
