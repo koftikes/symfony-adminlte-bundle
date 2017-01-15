@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\EventListener;
 use SbS\AdminLTEBundle\Event\UserEvent;
 use SbS\AdminLTEBundle\Model\Demo\UserModel;
 
+/**
+ * Class UserEventListener
+ * @package SbS\AdminLTEBundle\EventListener
+ */
 class UserEventListener
 {
     /**

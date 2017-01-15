@@ -1,11 +1,16 @@
 services:
 #Twig Extensions
-    sbs_adminlte.twig.user_extension:
+    sbs_adminlte.twig.nav_bar_extension:
         class: SbS\AdminLTEBundle\Twig\NavBarExtension
         arguments: ["@event_dispatcher"]
         tags:
             - { name: twig.extension }
 
+    sbs_adminlte.twig.side_bar_extension:
+        class: SbS\AdminLTEBundle\Twig\SideBarExtension
+        arguments: ["@event_dispatcher"]
+        tags:
+            - { name: twig.extension }
 
 ## Demo Event Listeners uncomment for demo
 #    sbs_adminlte.user_listener:
@@ -22,3 +27,8 @@ services:
 #        class: SbS\AdminLTEBundle\EventListener\NotificationListEventListener
 #        tags:
 #            - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
+#
+#    sbs_adminlte.sidebar_menu_listener:
+#        class: SbS\AdminLTEBundle\EventListener\SidebarMenuEventListener
+#        tags:
+#            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }

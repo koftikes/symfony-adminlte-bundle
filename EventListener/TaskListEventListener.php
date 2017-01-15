@@ -4,6 +4,10 @@ namespace SbS\AdminLTEBundle\EventListener;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Model\Demo\TaskModel;
 
+/**
+ * Class TaskListEventListener
+ * @package SbS\AdminLTEBundle\EventListener
+ */
 class TaskListEventListener
 {
     /**
