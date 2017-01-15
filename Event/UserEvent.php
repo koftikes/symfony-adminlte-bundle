@@ -1,4 +1,5 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Event;
 
 use SbS\AdminLTEBundle\Model\UserInterface;

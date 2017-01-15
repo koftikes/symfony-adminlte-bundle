@@ -1,8 +1,13 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Twig;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * Class AdminLTE_Extension
+ * @package SbS\AdminLTEBundle\Twig
+ */
 abstract class AdminLTE_Extension extends \Twig_Extension
 {
     /**

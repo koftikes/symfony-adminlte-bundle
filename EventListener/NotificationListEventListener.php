@@ -6,6 +6,10 @@ use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Model\Demo\NotificationModel;
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 
+/**
+ * Class NotificationListEventListener
+ * @package SbS\AdminLTEBundle\EventListener
+ */
 class NotificationListEventListener
 {
     /**

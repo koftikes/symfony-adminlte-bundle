@@ -20,4 +20,9 @@ class ThemeEvents
      * Used to receive the current user
      */
     const USER = 'sbs.admin_lte.user';
+
+    /**
+     * Used to receive the sidebar menu data
+     */
+    const SIDEBAR_MENU = 'sbs.admin_lte.sidebar_menu';
 }

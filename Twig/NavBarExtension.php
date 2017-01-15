@@ -1,4 +1,5 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Twig;
 
 use SbS\AdminLTEBundle\Event\NotificationListEvent;
@@ -6,8 +7,15 @@ use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
 
+/**
+ * Class NavBarExtension
+ * @package SbS\AdminLTEBundle\Twig
+ */
 class NavBarExtension extends AdminLTE_Extension
 {
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return [
@@ -88,7 +96,6 @@ class NavBarExtension extends AdminLTE_Extension
 
         return $environment->render('SbSAdminLTEBundle:NavBar:user.html.twig', ['user' => $userEvent->getUser()]);
     }
-
 
     /**
      * Show User Avatar

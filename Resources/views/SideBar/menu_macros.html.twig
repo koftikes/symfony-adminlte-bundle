@@ -1,0 +1,40 @@
+{% macro render_menu_item(item) %}
+    {% if item.route or item.children %}
+        <li id="{{ item.id }}" class="{{ item.active ? 'active' : '' }} {{ item.children ? 'treeview' : '' }}">
+            {{ _self.render_link(item) }}
+        </li>
+    {% else %}
+        <li class="header">{{ item.label }}</li>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_children(children) %}
+    <ul class="treeview-menu">
+        {% for child in children %}
+            <li class="{{ child.active ? 'active':'' }}" id="{{ child.id }}">
+                {{ _self.render_link(child) }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% macro render_link(link) %}
+    <a href="{{ link.children ? '#' : '/' in link.route ? link.route : path(link.route, link.routeArgs) }}">
+        {% if link.icon %}<i class="{{ link.icon|default('fa fa-circle-o') }}"></i>{% endif %}
+        <span>{{ link.label }}</span>
+        {% if link.children %}
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+        {% else %}
+            {% if link.badges %}{{ _self.render_badge(link.badges) }}{% endif %}
+        {% endif %}
+    </a>
+    {% if link.children %}
+        {{ _self.render_children(link.children) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_badge(badges) %}
+    {% for text, color in badges %}
+        <small class="label pull-right bg-{{ color }}">{{ text }}</small>
+    {% endfor %}
+{% endmacro %}

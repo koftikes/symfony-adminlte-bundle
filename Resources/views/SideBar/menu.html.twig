@@ -1,0 +1,6 @@
+{% import "SbSAdminLTEBundle:SideBar:menu_macros.html.twig" as admin_lte_macros %}
+<ul class="sidebar-menu">
+    {% for item in menu %}
+        {{ admin_lte_macros.render_menu_item(item) }}
+    {% endfor %}
+</ul>
