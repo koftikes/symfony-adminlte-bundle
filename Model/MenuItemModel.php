@@ -1,12 +1,10 @@
 <?php
 
-namespace SbS\AdminLTEBundle\Model\Demo;
-
-use SbS\AdminLTEBundle\Model\MenuItemInterface;
+namespace SbS\AdminLTEBundle\Model;
 
 /**
  * Class MenuItemModel
- * @package SbS\AdminLTEBundle\Model\Demo
+ * @package SbS\AdminLTEBundle\Model
  */
 class MenuItemModel implements MenuItemInterface
 {
@@ -17,32 +15,30 @@ class MenuItemModel implements MenuItemInterface
     private $label;
 
     /** @var string */
-    protected $route = null;
+    private $route = null;
 
     /** @var array */
-    protected $routeArgs = [];
+    private $routeArgs = [];
 
     /** @var array */
-    protected $children = [];
+    private $children = [];
 
-    /** @var mixed */
-    protected $icon = false;
+    /** @var string */
+    private $icon = '';
 
     /** @var array */
-    protected $badges = [];
+    private $badges = [];
 
     /** @var bool */
-    protected $active = false;
+    private $active = false;
 
     /** @var MenuItemInterface */
-    protected $parent = null;
+    private $parent = null;
 
-    public function __construct($id, $label, $route = null, $routeArgs = [])
+    public function __construct($label)
     {
-        $this->id = $id;
+        $this->id    = uniqid();
         $this->label = $label;
-        $this->route = $route;
-        $this->routeArgs = $routeArgs;
     }
 
     /**
@@ -128,6 +124,10 @@ class MenuItemModel implements MenuItemInterface
      */
     public function setChildren($children)
     {
+        /** @var MenuItemInterface $child */
+        foreach ($children as $child) {
+            $child->setParent($this);
+        }
         $this->children = $children;
 
         return $this;
