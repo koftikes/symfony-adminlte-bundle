@@ -14,8 +14,7 @@
         "components/bootstrap/css/bootstrap.min.css"
         "components/font-awesome/css/font-awesome.min.css"
         "bundles/sbsadminlte/styles/AdminLTE.min.css"
-        "bundles/sbsadminlte/styles/skins/_all-skins.min.css"
-        %}
+        "bundles/sbsadminlte/styles/skins/_all-skins.min.css" %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
@@ -25,67 +24,67 @@
 </head>
 <body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} fixed sidebar-mini login-page">
 {% block inner_body %}
-<div class="wrapper">
-    {% block admin_lte_header %}
-        <header class="main-header">
-            {% block admin_lte_logo %}
-                <a href="#" class="logo">
-                    <span class="logo-mini"><b>A</b>LT</span>
-                    <span class="logo-lg"><b>Admin</b>LTE</span>
-                </a>
-            {% endblock %}
-            {# Header Navbar: style can be found in header.less #}
-            <nav class="navbar navbar-static-top" role="navigation">
-                {# Sidebar toggle button #}
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            {% block admin_lte_navbar %}
-                                {{ nav_bar_notifications() }}
-                                {{ nav_bar_tasks() }}
-                                {{ nav_bar_user_account() }}
-                            {% endblock %}
-                        </ul>
-                    </div>
-                {% endif %}
-            </nav>
-        </header>
-    {% endblock %}
-    {# Left side column. contains the logo and sidebar: style can be found in sidebar.less #}
-    <aside class="main-sidebar sidebar-offcanvas">
-        <section class="sidebar">
-            {% block admin_lte_sidebar %}
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {{ side_bar_menu(app.request) }}
-                {% endif %}
-            {% endblock %}
-        </section>
-    </aside>
-    {# Right side column. Contains the navbar and content of the page #}
-    <div class="content-wrapper">
-        {% block content %}
-            <section class="content-header">
-                {% block header_content %}
-                    {{ admin_lte_macros.page_header("Page Title", "Description of Page") }}
+    <div class="wrapper">
+        {% block admin_lte_header %}
+            <header class="main-header">
+                {% block admin_lte_logo %}
+                    <a href="#" class="logo">
+                        <span class="logo-mini"><b>A</b>LT</span>
+                        <span class="logo-lg"><b>Admin</b>LTE</span>
+                    </a>
                 {% endblock %}
-                {% block admin_lte_breadcrumb %}{% endblock %}
+                {# Header Navbar: style can be found in header.less #}
+                <nav class="navbar navbar-static-top" role="navigation">
+                    {# Sidebar toggle button #}
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                {% block admin_lte_navbar %}
+                                    {{ nav_bar_notifications() }}
+                                    {{ nav_bar_tasks() }}
+                                    {{ nav_bar_user_account() }}
+                                {% endblock %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </nav>
+            </header>
+        {% endblock %}
+        {# Left side column. contains the logo and sidebar: style can be found in sidebar.less #}
+        <aside class="main-sidebar sidebar-offcanvas">
+            <section class="sidebar">
+                {% block admin_lte_sidebar %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {{ side_bar_menu(app.request) }}
+                    {% endif %}
+                {% endblock %}
             </section>
-            <section class="content">
-                {% block page_content %}{% endblock %}
-            </section>
+        </aside>
+        {# Right side column. Contains the navbar and content of the page #}
+        <div class="content-wrapper">
+            {% block content %}
+                <section class="content-header">
+                    {% block header_content %}
+                        {{ admin_lte_macros.page_header("Page Title", "Description of Page") }}
+                    {% endblock %}
+                    {% block admin_lte_breadcrumb %}{% endblock %}
+                </section>
+                <section class="content">
+                    {% block page_content %}{% endblock %}
+                </section>
+            {% endblock %}
+        </div>
+        {% block admin_lte_footer %}
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs"><b>Version</b> 2.3.8</div>
+                <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong>
+                All rights reserved.
+            </footer>
         {% endblock %}
     </div>
-    {% block admin_lte_footer %}
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs"><b>Version</b> 2.3.8</div>
-            <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong>
-            All rights reserved.
-        </footer>
-    {% endblock %}
-</div>
 {% endblock %}
 {% block corejs %}
     {% javascripts output='js/admin-lte-bundle.min.js'
@@ -94,8 +93,7 @@
     "components/bootstrap/js/bootstrap.min.js"
     "bundles/sbsadminlte/plugins/slimScroll/jquery.slimscroll.min.js"
     "bundles/sbsadminlte/plugins/fastclick/fastclick.min.js"
-    "bundles/sbsadminlte/js/AdminLTE.min.js"
-    %}
+    "bundles/sbsadminlte/js/AdminLTE.min.js" %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

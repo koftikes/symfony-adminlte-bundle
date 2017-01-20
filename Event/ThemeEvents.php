@@ -1,4 +1,5 @@
 <?php
+
 namespace SbS\AdminLTEBundle\Event;
 
 /**
@@ -10,7 +11,7 @@ class ThemeEvents
      * Used to receive notification data
      */
     const NOTICES = 'sbs.admin_lte.notifications';
-    
+
     /**
      * Used to receive task data
      */
