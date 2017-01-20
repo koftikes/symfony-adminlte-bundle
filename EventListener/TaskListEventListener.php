@@ -1,4 +1,5 @@
 <?php
+
 namespace SbS\AdminLTEBundle\EventListener;
 
 use SbS\AdminLTEBundle\Event\TaskListEvent;

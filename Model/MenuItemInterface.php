@@ -11,9 +11,9 @@ interface MenuItemInterface
     /**
      *  Colors of badge
      */
-    const COLOR_BLUE = 'blue';
-    const COLOR_GREEN = 'green';
-    const COLOR_RED = 'red';
+    const COLOR_BLUE   = 'blue';
+    const COLOR_GREEN  = 'green';
+    const COLOR_RED    = 'red';
     const COLOR_YELLOW = 'yellow';
 
     /**
