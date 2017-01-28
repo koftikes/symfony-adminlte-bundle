@@ -36,9 +36,7 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig(
                 'twig', [
-                    'form' => [
-                        'resources' => ['bootstrap_3_layout.html.twig']
-                    ]
+                    'form_themes' => ['bootstrap_3_layout.html.twig']
                 ]
             );
         }

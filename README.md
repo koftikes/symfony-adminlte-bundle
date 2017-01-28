@@ -57,7 +57,7 @@ _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\Scrip
 },
 ```
 
-### Symfony 2.8 notice
+### Symfony 2.8 and higher notice
 
 _Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
 
@@ -75,6 +75,22 @@ public function registerBundles()
     );
 }
 ```
+
+Add the following lines at `app/config/config.yml`:
+
+    # Assetic Configuration
+    assetic:
+        debug: "%kernel.debug%"
+        use_controller: "%kernel.debug%"
+        filters:
+            cssrewrite: ~
+
+And following lines at `app/config/config_dev.yml`:
+
+    # Assetic Configuration
+    assetic:
+        use_controller: false
+
 
 ### Changing default values template
 
