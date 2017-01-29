@@ -5,10 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block title %}AdminLTE{% endblock %}</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    {# Tell the browser to be responsive to screen width. #}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-
     {% block corestyles %}
         {% stylesheets output='css/admin-lte-bundle.min.css' filter="cssrewrite"
         "components/bootstrap/css/bootstrap.min.css"
@@ -18,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
-    {# use standard twig block stylesheets to include CSS that is used on single page #}
+    {# Use standard twig block stylesheets to include CSS that is used on single page. #}
     {% block stylesheets %}{% endblock %}
     {% block javascripts_head %}{% endblock %}
 </head>
@@ -53,7 +52,7 @@
                 </nav>
             </header>
         {% endblock %}
-        {# Left side column. contains the logo and sidebar: style can be found in sidebar.less #}
+        {# Left side column. Contains the logo and sidebar: style can be found in sidebar.less #}
         <aside class="main-sidebar sidebar-offcanvas">
             <section class="sidebar">
                 {% block admin_lte_sidebar %}
@@ -63,7 +62,7 @@
                 {% endblock %}
             </section>
         </aside>
-        {# Right side column. Contains the navbar and content of the page #}
+        {# Content wrapper. Contains the content of the page. #}
         <div class="content-wrapper">
             {% block content %}
                 <section class="content-header">
@@ -73,6 +72,7 @@
                     {% block admin_lte_breadcrumb %}{% endblock %}
                 </section>
                 <section class="content">
+                    {{ include("SbSAdminLTEBundle:Layout:flash_message.html.twig") }}
                     {% block page_content %}{% endblock %}
                 </section>
             {% endblock %}
@@ -97,7 +97,7 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
-{# use standard twig block javascripts to include JS that is used on single page #}
+{# Use standard twig block javascripts to include JS that is used on single page. #}
 {% block javascripts %}{% endblock %}
 </body>
 </html>

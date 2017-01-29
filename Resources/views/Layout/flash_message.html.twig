@@ -1,0 +1,28 @@
+{% for flashMessage in app.session.flashbag.get("success") %}
+    <div class="alert alert-success flash-alert alert-dismissible">
+        {{ _self.close() }}
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get("info") %}
+    <div class="alert alert-info flash-alert alert-dismissible">
+        {{ _self.close() }}
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get("warning") %}
+    <div class="alert alert-warning flash-alert alert-dismissible">
+        {{ _self.close() }}
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get("error") %}
+    <div class="alert alert-danger flash-alert alert-dismissible">
+        {{ _self.close() }}
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% macro close() %}
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+{% endmacro %}

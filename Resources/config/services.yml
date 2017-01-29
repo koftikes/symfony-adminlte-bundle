@@ -12,7 +12,7 @@ services:
         tags:
             - { name: twig.extension }
 
-## Demo Event Listeners uncomment for demo
+##Demo Event Listeners uncomment for demo
 #    sbs_adminlte.user_listener:
 #        class: SbS\AdminLTEBundle\EventListener\UserEventListener
 #        tags:
