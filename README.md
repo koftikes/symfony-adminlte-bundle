@@ -17,7 +17,7 @@ Configure components directory in `composer.json`:
 },
 ```
 
-After that run the next composer command to add and download bundle `sbs/symfony-adminlte-bundle` to your composer.json:
+After that run the next composer command to download and add bundle `sbs/symfony-adminlte-bundle` to your composer.json:
 
     composer require sbs/symfony-adminlte-bundle
 
@@ -57,7 +57,7 @@ _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\Scrip
 },
 ```
 
-### Symfony 2.8 and higher notice
+### Notice for Symfony 2.8 and higher
 
 _Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
 
@@ -120,6 +120,10 @@ AdminLTE skins are: skin-blue (default for this bundle), skin-blue-light, skin-y
 If you want to know more then go ahead and check docs for AdminLTE [here][1].
 
 There are a few values you could change for sure without need to touch anything at bundle, just take a look under `Resources/views`.
+
+### Next Steps
+* [Using the layout](Resources/docs/layout.md)
+
 
 That's all. Enjoy.
 
