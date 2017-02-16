@@ -1,4 +1,4 @@
-{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as admin_lte_macros %}
+{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +67,7 @@
             {% block content %}
                 <section class="content-header">
                     {% block header_content %}
-                        {{ admin_lte_macros.page_header("Page Title", "Description of Page") }}
+                        {{ macros.page_header("Page Title", "Description of Page") }}
                     {% endblock %}
                     {% block admin_lte_breadcrumb %}{% endblock %}
                 </section>

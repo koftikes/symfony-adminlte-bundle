@@ -54,11 +54,15 @@ In order to use the layout, your view(s) should extend from the provided base la
  Located in `<div class="content-wrapper">`. Contains header_content, admin_lte_breadcrumb and page_content blocks.
 
 #### header_content
-  Contain "Page Title" and "Description of Page". Recommend use admin_lte_macros for define it. For example:
+  Contain "Page Title" and "Description of Page". Recommend use AdminLTE macros for define it.
+  For example:
 ```twig
+{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
+...
 {% block header_content %}
-    {{ admin_lte_macros.page_header("Homepage", "Short description of homepage.") }}
+    {{ macros.page_header("Homepage", "Short description of homepage.") }}
 {% endblock %}
+...
 ```
 
 #### admin_lte_breadcrumb
