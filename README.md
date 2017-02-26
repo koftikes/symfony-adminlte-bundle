@@ -92,6 +92,19 @@ And following lines at `app/config/config_dev.yml`:
         use_controller: false
 
 
+### Install Assets and Dump Assetic
+Run the following two commands:
+_For Symfony 2.8.*_
+
+    php ./app/console assets:install
+    php ./app/console assetic:dump
+
+_For Symfony 3.*.*_
+
+    php ./bin/console assets:install
+    php ./bin/console assetic:dump
+
+
 ### Changing default values template
 
 If you want to change any default value as for example `skin` all you need to do is define the same at `app/config/config.yml` under `[twig]` section.
