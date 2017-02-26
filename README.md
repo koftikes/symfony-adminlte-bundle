@@ -92,14 +92,14 @@ And following lines at `app/config/config_dev.yml`:
         use_controller: false
 
 
-### Install Assets and Dump Assetic
-Run the following two commands:
-_For Symfony 2.8.*_
+Install Assets and Dump Assetic. Run the following two commands:
+
+_For Symfony 2.8.\*_
 
     php ./app/console assets:install
     php ./app/console assetic:dump
 
-_For Symfony 3.*.*_
+_For Symfony 3.\*.\*_
 
     php ./bin/console assets:install
     php ./bin/console assetic:dump
