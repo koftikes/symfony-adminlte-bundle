@@ -6,6 +6,8 @@ In order to use the layout, your view(s) should extend from the provided base la
 {% extends 'SbSAdminLTEBundle:Layout:base.html.twig' %}
 ```
 
+For example you can do it in /app/Resources/views/base.html.twig and all your views will be use the AdminLTE theme.
+
 ### Layout Blocks
 
 #### title
