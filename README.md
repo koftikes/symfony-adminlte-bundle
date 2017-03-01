@@ -121,9 +121,10 @@ If you want to know more then go ahead and check docs for AdminLTE [here][1].
 
 There are a few values you could change for sure without need to touch anything at bundle, just take a look under `Resources/views`.
 
-### Next Steps
-* [Using the layout](Resources/docs/layout.md)
+## Next Steps
 
+* [Using Layout](Resources/docs/layout.md)
+* [Navbar User](Resources/docs/navbar_user.md)
 
 That's all. Enjoy.
 
