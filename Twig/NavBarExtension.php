@@ -111,10 +111,12 @@ class NavBarExtension extends AdminLTE_Extension
             $image = 'bundles/sbsadminlte/img/avatar.png';
         }
 
+        $imageBase64 = "data:image/png;base64," . (file_exists($image) ? base64_encode(file_get_contents($image)) : "");
+
         return $environment
-            ->createTemplate('<img src="{{ asset(image) }}" class="{{ class }}" alt="{{ alt }}"/>')
+            ->createTemplate('<img src="{{ image }}" class="{{ class }}" alt="{{ alt }}"/>')
             ->render([
-                'image' => $image,
+                'image' => $imageBase64,
                 'class' => $class,
                 'alt'   => $alt,
             ]);
