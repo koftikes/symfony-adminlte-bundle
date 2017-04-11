@@ -107,12 +107,14 @@ class NavBarExtension extends AdminLTE_Extension
      */
     public function AvatarFunction(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
-        if (!$image) {
+        if (!$image || !file_exists($image)) {
             $image = 'bundles/sbsadminlte/img/avatar.png';
         }
 
+        $image = "data:image/png;base64," . base64_encode(file_get_contents($image));
+
         return $environment
-            ->createTemplate('<img src="{{ asset(image) }}" class="{{ class }}" alt="{{ alt }}"/>')
+            ->createTemplate('<img src="{{ image }}" class="{{ class }}" alt="{{ alt }}"/>')
             ->render([
                 'image' => $image,
                 'class' => $class,
