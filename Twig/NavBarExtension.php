@@ -6,6 +6,7 @@ use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Class NavBarExtension
@@ -13,6 +14,19 @@ use SbS\AdminLTEBundle\Event\UserEvent;
  */
 class NavBarExtension extends AdminLTE_Extension
 {
+    private $kernelDir;
+
+    /**
+     * NavBarExtension constructor.
+     * @param EventDispatcherInterface $dispatcher
+     * @param $kernelDir
+     */
+    public function __construct(EventDispatcherInterface $dispatcher, $kernelDir)
+    {
+        $this->kernelDir = $kernelDir;
+        parent::__construct($dispatcher);
+    }
+
     /**
      * @return array
      */
@@ -108,7 +122,7 @@ class NavBarExtension extends AdminLTE_Extension
     public function AvatarFunction(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
         if (!$image || !file_exists($image)) {
-            $image = 'bundles/sbsadminlte/img/avatar.png';
+            $image = $this->kernelDir . '/../web/bundles/sbsadminlte/img/avatar.png';
         }
 
         $image = "data:image/png;base64," . base64_encode(file_get_contents($image));
