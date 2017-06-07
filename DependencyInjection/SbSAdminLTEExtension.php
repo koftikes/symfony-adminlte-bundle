@@ -44,7 +44,13 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
         if (isset($bundles['AsseticBundle'])) {
             $container->prependExtensionConfig(
                 'assetic', [
-                    'bundles' => ['SbSAdminLTEBundle']
+                    'bundles' => ['SbSAdminLTEBundle'],
+                    'assets' => [
+                        'bootstrap_min_css_map' => [
+                            'inputs' => ['%kernel.root_dir%/../vendor/components/bootstrap/css/bootstrap.min.css.map'],
+                            'output' => 'css/bootstrap.min.css.map'
+                        ]
+                    ]
                 ]
             );
 
