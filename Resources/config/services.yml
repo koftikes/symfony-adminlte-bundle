@@ -6,7 +6,7 @@ services:
         tags:
             - { name: twig.extension }
 
-    sbs_adminlte.twig.side_bar_extension:
+    sbs_adminlte.twig.sidebar_extension:
         class: SbS\AdminLTEBundle\Twig\SideBarExtension
         arguments: ["@event_dispatcher"]
         tags:
