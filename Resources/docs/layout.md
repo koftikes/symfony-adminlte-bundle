@@ -29,6 +29,19 @@ For example you can do it in /app/Resources/views/base.html.twig and all your vi
 #### stylesheets
   Located in tag `<head>`. Use standard twig block stylesheets to include CSS that is used on single page.
 
+#### corejs
+  Located in tag `<head>`. Using for main theme JS, on prod environment all files will be merged in one `admin-lte-bundle.min.js`.
+  Please don't forget to use `{{ parent() }}` if you want adding your javascripts in theme. For example:
+```twig
+{% block corejs %}
+    {{ parent() }}
+    {% javascripts output="js/components.min.js"
+    "components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js" %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+```
+
 #### javascripts_head
   Located in tag `<head>`. Using if we need add some javascript in head of page. You can use it to integrate modernizr.js or etc.
 
@@ -76,18 +89,5 @@ For example you can do it in /app/Resources/views/base.html.twig and all your vi
 #### admin_lte_footer
   Located in tag `<body>`. This is footer content area.
 
-#### corejs
-  Located before tag body close. Using for main theme JS, on prod environment all files will be merged in one `admin-lte-bundle.min.js`.
-  Please don't forget to use `{{ parent() }}` if you want adding your javascripts in theme. For example:
-```twig
-{% block corejs %}
-    {{ parent() }}
-    {% javascripts output="js/components.min.js"
-    "components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js" %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-```
-
 #### javascripts
-  Located before tag body close and after corejs block. Use standard twig block javascripts to include JS that is used on single page
+  Located before tag `<body>` close. Use standard twig block javascripts to include JS that is used on single page

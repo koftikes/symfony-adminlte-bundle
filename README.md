@@ -57,6 +57,12 @@ _Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\Scrip
 },
 ```
 
+Add the following lines at `app/config/routing.yml`:
+
+    sbs_adminlte:
+        resource: "@SbSAdminLTEBundle/Resources/config/routing.xml"
+
+
 ### Notice for Symfony 2.8 and higher
 
 _Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
@@ -90,7 +96,6 @@ And following lines at `app/config/config_dev.yml`:
     # Assetic Configuration
     assetic:
         use_controller: false
-
 
 Install Assets and Dump Assetic. Run the following two commands:
 
