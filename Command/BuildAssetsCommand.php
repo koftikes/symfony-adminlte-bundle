@@ -57,9 +57,11 @@ class BuildAssetsCommand extends ContainerAwareCommand
         $this->processFiles($fs, "{$resource}public/img/", $img);
 
         foreach ($assets["plugins"] as $plugin) {
-            $plg = $this->processFolders(realpath($this->package . $plugin));
-            $this->processFiles($fs, "{$resource}public{$plugin}/", $plg);
+            $name = strrchr($plugin, "/");
+            $plg  = $this->processFolders(realpath($this->package . $plugin));
+            $this->processFiles($fs, "{$resource}public/plugins{$name}/", $plg);
         }
+
         $io->success("All assets were successfully installed into bundle directory.");
     }
 
