@@ -23,7 +23,7 @@
         "components/jqueryui": "~1.12",
         "components/bootstrap": "^3.3",
         "components/font-awesome": "^4.7",
-        "almasaeed2010/adminlte": "^2.3"
+        "almasaeed2010/adminlte": "~2.3"
     },
     "autoload": {
         "psr-4": { "SbS\\AdminLTEBundle\\": "" }
