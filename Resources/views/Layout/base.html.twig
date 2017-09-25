@@ -24,15 +24,18 @@
         "components/jquery/jquery.min.js"
         "components/jquery-ui/jquery-ui.min.js"
         "components/bootstrap/js/bootstrap.min.js"
-        "bundles/sbsadminlte/plugins/slimScroll/jquery.slimscroll.min.js"
-        "bundles/sbsadminlte/plugins/fastclick/fastclick.min.js"
+        "bundles/sbsadminlte/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+        "bundles/sbsadminlte/plugins/fastclick/lib/fastclick.js"
         "bundles/sbsadminlte/js/AdminLTE.min.js" %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}
     {% block javascripts_head %}{% endblock %}
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} fixed login-page sidebar-mini {{ sidebar_collapse(app.session) }}">
+<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} sidebar-mini login-page {{ sidebar_collapse(app.session) }}">
 {% block inner_body %}
     <div class="wrapper">
         {% block admin_lte_header %}
@@ -61,7 +64,7 @@
             </header>
         {% endblock %}
         {# Left side column. Contains the logo and sidebar: style can be found in sidebar.less #}
-        <aside class="main-sidebar sidebar-offcanvas">
+        <aside class="main-sidebar">
             <section class="sidebar">
                 {% block admin_lte_sidebar %}
                     {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
