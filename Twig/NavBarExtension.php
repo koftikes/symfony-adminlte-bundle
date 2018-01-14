@@ -58,7 +58,11 @@ class NavBarExtension extends AdminLTE_Extension
 
     /**
      * @param \Twig_Environment $environment
+     *
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function NotificationsFunction(\Twig_Environment $environment)
     {
@@ -77,7 +81,11 @@ class NavBarExtension extends AdminLTE_Extension
 
     /**
      * @param \Twig_Environment $environment
+     *
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function TasksFunction(\Twig_Environment $environment)
     {
@@ -97,7 +105,11 @@ class NavBarExtension extends AdminLTE_Extension
 
     /**
      * @param \Twig_Environment $environment
+     *
      * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function UserAccountFunction(\Twig_Environment $environment)
     {
@@ -112,12 +124,16 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * Show User Avatar
      * @param \Twig_Environment $environment
-     * @param $image
-     * @param string $alt
-     * @param string $class
+     * @param                   $image
+     * @param string            $alt
+     * @param string            $class
+     *
      * @return string
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Syntax
      */
     public function AvatarFunction(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
