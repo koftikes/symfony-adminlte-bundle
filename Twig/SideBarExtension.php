@@ -52,7 +52,10 @@ class SideBarExtension extends AdminLTE_Extension
 
     /**
      * @param \Twig_Environment $environment
+     *
      * @return string
+     * @throws \Throwable
+     * @throws \Twig_Error_Runtime
      */
     public function ToggleButtonFunction(\Twig_Environment $environment)
     {

@@ -16,7 +16,7 @@
         {% if user.info %}
             <li class="user-body">
                 <div class="col-xs-12 text-center">
-                    {{ user.info }}
+                    {{ user.info|raw }}
                 </div>
             </li>
         {% endif %}

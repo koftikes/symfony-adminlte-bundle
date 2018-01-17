@@ -97,14 +97,21 @@ And following lines at `app/config/config_dev.yml`:
     assetic:
         use_controller: false
 
-Install Assets and Dump Assetic. Run the following two commands:
+_For Symfony 3.4 and higher next snippet should be added to `framework` section._
+
+    framework:
+        # ...
+        templating:
+            engines: ['twig']
+
+#### Install Assets and Dump Assetic (run the following two commands):
 
 _For Symfony 2.8.\*_
 
     php ./app/console assets:install
     php ./app/console assetic:dump
 
-_For Symfony 3.\*.\*_
+_For Symfony 3.4.\*_
 
     php ./bin/console assets:install
     php ./bin/console assetic:dump
@@ -143,6 +150,9 @@ There are a few values you could change for sure without need to touch anything 
 
 * [Using Layout](Resources/docs/layout.md)
 * [Navbar User](Resources/docs/navbar_user.md)
+* [Navbar Task List](Resources/docs/navbar_task_list.md)
+* [Navbar Notification List](Resources/docs/navbar_notification_list.md)
+* [Sidebar Menu](Resources/docs/sidebar_menu.md)
 
 That's all. Enjoy.
 
