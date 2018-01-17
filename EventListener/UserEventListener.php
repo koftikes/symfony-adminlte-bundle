@@ -17,7 +17,11 @@ class UserEventListener
     public function onShowUser(UserEvent $event)
     {
         $user = new UserModel("demo_user");
-        $user->setMemberSince(new \DateTime())->setUsername('Demo User');
+        $user
+            ->setName('Demo User')
+            ->setTitle('User Title')
+            ->setInfo('<b>Email:</b> <a href="mailto:demo_user@example.com">demo_user@example.com</a>')
+            ->setMemberSince(new \DateTime());
 
         $event->setUser($user);
     }

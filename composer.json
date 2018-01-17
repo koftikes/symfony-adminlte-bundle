@@ -27,5 +27,10 @@
     },
     "autoload": {
         "psr-4": { "SbS\\AdminLTEBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
     }
 }
