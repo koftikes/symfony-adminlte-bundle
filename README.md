@@ -1,8 +1,9 @@
 AdminLTEBundle
 ==============
 
-AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony.
-This bundle integrates several commonly used JavaScripts and Font-Awesome.
+AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony. This bundle integrates several commonly used JavaScripts and Font-Awesome.
+
+From version 1.1.x bundle use AdminLTE 2.4.x all theme changes you can find in official [AdminLTE blog][2].
 
 ## Installation
 
@@ -142,7 +143,7 @@ and then use as follow in `app/config/config.yml`:
             admin_lte_skin: "%app.skin%"
 
 AdminLTE skins are: skin-blue (default for this bundle), skin-blue-light, skin-yellow, skin-yellow-light, skin-green, skin-green-light, skin-purple, skin-purple-light, skin-red, skin-red-light, skin-black and skin-black-light.
-If you want to know more then go ahead and check docs for AdminLTE [here][1].
+If you want to know more about theme then go ahead and check [docs for AdminLTE][1].
 
 There are a few values you could change for sure without need to touch anything at bundle, just take a look under `Resources/views`.
 
@@ -156,4 +157,5 @@ There are a few values you could change for sure without need to touch anything 
 
 That's all. Enjoy.
 
-[1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
+[1]: https://adminlte.io/docs/2.4/installation
+[2]: https://adminlte.io/blog/adminlte-v2.4-release-notes-and-upgrade-guide
