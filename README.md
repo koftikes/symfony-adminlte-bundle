@@ -8,13 +8,14 @@ From version 1.1.x bundle use AdminLTE 2.4.x all theme changes you can find in o
 ## Installation
 
 Installation using composer is really easy:
-Configure components directory in `composer.json`:
+Configure components installers directory in `composer.json`:
 
 ```json
-"config": {
-    "bin-dir": "bin",
-    "component-dir": "web/components",
-    "component-baseurl": "/components"
+"extra": {
+    "installer-types": ["library", "component"],
+    "installer-paths": {
+        "web/components/{$name}/": ["type:component"]
+    },
 },
 ```
 
