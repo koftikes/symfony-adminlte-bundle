@@ -47,7 +47,7 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
                     'bundles' => ['SbSAdminLTEBundle'],
                     'assets' => [
                         'bootstrap_min_css_map' => [
-                            'inputs' => ['%kernel.root_dir%/../vendor/components/bootstrap/css/bootstrap.min.css.map'],
+                            'inputs' => ['%kernel.root_dir%/../web/components/bootstrap/css/bootstrap.min.css.map'],
                             'output' => 'css/bootstrap.min.css.map'
                         ]
                     ]
