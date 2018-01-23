@@ -1,6 +1,6 @@
 {
     "name": "sbs/symfony-adminlte-bundle",
-    "description": "Symfony2 Project AdminLTE Integration Bundle",
+    "description": "Symfony AdminLTE Integration Bundle",
     "homepage": "https://github.com/koftikes/symfony-adminlte-bundle",
     "keywords": ["symfony", "adminlte"],
     "type": "symfony-bundle",
@@ -15,9 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
-        "symfony/framework-bundle": "~2.6|~3.0",
-        "symfony/assetic-bundle": ">=2.8",
+        "php": ">=7.1",
+        "symfony/framework-bundle": "^3.0|^4.0",
         "oomphinc/composer-installers-extender": "^1.1",
         "components/jquery": "^3.2",
         "components/jqueryui": "~1.12",
@@ -30,7 +29,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "1.5.x-dev"
         }
     }
 }
