@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="sbs_adminlte_sidebar_collapse" path="/sidebar/collapse" methods="POST">
+    <route id="sbs_adminlte.controller.sidebar_collapse" path="/sidebar/collapse" methods="POST">
         <default key="_controller">SbSAdminLTEBundle:SideBar:collapse</default>
     </route>
 
