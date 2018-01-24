@@ -17,6 +17,11 @@
     "require": {
         "php": ">=7.1",
         "symfony/framework-bundle": "^3.0|^4.0",
+        "symfony/security-bundle": "^3.0|^4.0",
+        "symfony/asset": "^3.0|^4.0",
+        "symfony/twig-bundle": "^3.0|^4.0",
+        "twig/extensions": "^1.5",
+        "twig/twig": "^2.4",
         "oomphinc/composer-installers-extender": "^1.1",
         "components/jquery": "^3.2",
         "components/jqueryui": "~1.12",
