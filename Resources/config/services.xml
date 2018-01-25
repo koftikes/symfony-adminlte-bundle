@@ -11,12 +11,27 @@
         <service id="sbs_adminlte.twig.nav_bar_extension" class="SbS\AdminLTEBundle\Twig\NavBarExtension">
             <tag name="twig.extension"/>
             <argument type="service" id="event_dispatcher"/>
-            <argument>%kernel.project_dir%</argument>
+            <argument>%kernel.project_dir%/public/bundles/sbsadminlte</argument>
         </service>
-
         <service id="sbs_adminlte.twig.sidebar_extension" class="SbS\AdminLTEBundle\Twig\SideBarExtension">
             <tag name="twig.extension"/>
             <argument type="service" id="event_dispatcher"/>
         </service>
+
+        <!-- Demo Event Listeners -->
+        <!--
+        <service id="sbs_adminlte.listener.user" class="SbS\AdminLTEBundle\EventListener\UserEventListener">
+            <tag name="kernel.event_listener" event="sbs.admin_lte.user" method="onShowUser"/>
+        </service>
+        <service id="sbs_adminlte.listener.tasks" class="SbS\AdminLTEBundle\EventListener\TaskListEventListener">
+            <tag name="kernel.event_listener" event="sbs.admin_lte.tasks" method="onListTasks"/>
+        </service>
+        <service id="sbs_adminlte.listener.notifications" class="SbS\AdminLTEBundle\EventListener\NotificationListEventListener">
+            <tag name="kernel.event_listener" event="sbs.admin_lte.notifications" method="onListNotifications"/>
+        </service>
+        <service id="sbs_adminlte.listener.sidebar_menu" class="SbS\AdminLTEBundle\EventListener\SidebarMenuEventListener">
+            <tag name="kernel.event_listener" event="sbs.admin_lte.sidebar_menu" method="onShowMenu"/>
+        </service>
+        -->
     </services>
 </container>

@@ -10,20 +10,25 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Class NavBarExtension
+ *
  * @package SbS\AdminLTEBundle\Twig
  */
 class NavBarExtension extends AdminLTE_Extension
 {
-    private $kernelDir;
+    /**
+     * @var string - Dir of AdminLTE bundle
+     */
+    private $bundleDir;
 
     /**
      * NavBarExtension constructor.
+     *
      * @param EventDispatcherInterface $dispatcher
-     * @param $kernelDir
+     * @param                          $bundleDir
      */
-    public function __construct(EventDispatcherInterface $dispatcher, $kernelDir)
+    public function __construct(EventDispatcherInterface $dispatcher, $bundleDir)
     {
-        $this->kernelDir = $kernelDir;
+        $this->bundleDir = $bundleDir;
         parent::__construct($dispatcher);
     }
 
@@ -52,7 +57,7 @@ class NavBarExtension extends AdminLTE_Extension
                 'user_avatar',
                 [$this, 'AvatarFunction'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
-            )
+            ),
         ];
     }
 
@@ -73,7 +78,7 @@ class NavBarExtension extends AdminLTE_Extension
         /** @var NotificationListEvent $noticesEvent */
         $noticesEvent = $this->getDispatcher()->dispatch(ThemeEvents::NOTICES, new NotificationListEvent());
 
-        return $environment->render('SbSAdminLTEBundle:NavBar:notifications.html.twig', [
+        return $environment->render('@SbSAdminLTE/NavBar/notifications.html.twig', [
             'notifications' => $noticesEvent->getNotifications(),
             'total'         => $noticesEvent->getTotal(),
         ]);
@@ -96,11 +101,10 @@ class NavBarExtension extends AdminLTE_Extension
         /** @var TaskListEvent $tasksEvent */
         $tasksEvent = $this->getDispatcher()->dispatch(ThemeEvents::TASKS, new TaskListEvent());
 
-        return $environment->render('SbSAdminLTEBundle:NavBar:tasks.html.twig', [
+        return $environment->render('@SbSAdminLTE/NavBar/tasks.html.twig', [
             'tasks' => $tasksEvent->getTasks(),
             'total' => $tasksEvent->getTotal(),
         ]);
-
     }
 
     /**
@@ -120,7 +124,7 @@ class NavBarExtension extends AdminLTE_Extension
         /** @var UserEvent $userEvent */
         $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::USER, new UserEvent());
 
-        return $environment->render('SbSAdminLTEBundle:NavBar:user.html.twig', ['user' => $userEvent->getUser()]);
+        return $environment->render('@SbSAdminLTE/NavBar/user.html.twig', ['user' => $userEvent->getUser()]);
     }
 
     /**
@@ -138,7 +142,7 @@ class NavBarExtension extends AdminLTE_Extension
     public function AvatarFunction(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
         if (!$image || !file_exists($image)) {
-            $image = $this->kernelDir . '/../web/bundles/sbsadminlte/img/avatar.png';
+            $image = $this->bundleDir . '/img/avatar.png';
         }
 
         $image = "data:image/png;base64," . base64_encode(file_get_contents($image));
