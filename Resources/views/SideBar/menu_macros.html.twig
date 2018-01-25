@@ -33,7 +33,7 @@
     {% import _self as this %}
     <ul class="treeview-menu">
         {% for child in children %}
-            <li class="{{ child.active ? 'active':'' }}" id="{{ child.id }}">
+            <li class="{{ child.active ? 'active':'' }} {{ child.children ? 'treeview' : '' }}" id="{{ child.id }}">
                 {{ this.render_link(child) }}
             </li>
         {% endfor %}
