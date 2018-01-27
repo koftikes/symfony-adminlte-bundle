@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class SideBarExtension
+ *
  * @package SbS\AdminLTEBundle\Twig
  */
 class SideBarExtension extends AdminLTE_Extension
@@ -47,7 +48,7 @@ class SideBarExtension extends AdminLTE_Extension
         /** @var SidebarMenuEvent $menuEvent */
         $menuEvent = $this->getDispatcher()->dispatch(ThemeEvents::SIDEBAR_MENU, new SidebarMenuEvent($request));
 
-        return $environment->render('SbSAdminLTEBundle:SideBar:menu.html.twig', ['menu' => $menuEvent->getItems()]);
+        return $environment->render('@SbSAdminLTE/SideBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }
 
     /**
@@ -81,6 +82,7 @@ class SideBarExtension extends AdminLTE_Extension
 
     /**
      * @param Session $session
+     *
      * @return string
      */
     public function SidebarCollapseFunction(Session $session)
@@ -90,6 +92,5 @@ class SideBarExtension extends AdminLTE_Extension
         }
 
         return '';
-
     }
 }

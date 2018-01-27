@@ -1,4 +1,4 @@
-{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
+{% import "@SbSAdminLTE/Layout/main_macros.html.twig" as macros %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,7 @@
                     {% block admin_lte_breadcrumb %}{% endblock %}
                 </section>
                 <section class="content">
-                    {{ include("SbSAdminLTEBundle:Layout:flash_message.html.twig") }}
+                    {{ include("@SbSAdminLTE/Layout/flash_message.html.twig") }}
                     {% block page_content %}{% endblock %}
                 </section>
             {% endblock %}

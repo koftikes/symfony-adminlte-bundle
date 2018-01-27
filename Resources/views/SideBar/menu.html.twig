@@ -1,4 +1,4 @@
-{% import "SbSAdminLTEBundle:SideBar:menu_macros.html.twig" as admin_lte_macros %}
+{% import "@SbSAdminLTE/SideBar/menu_macros.html.twig" as admin_lte_macros %}
 <ul class="sidebar-menu" data-widget="tree">
     {% for item in menu %}
         {{ admin_lte_macros.render_menu_item(item) }}
