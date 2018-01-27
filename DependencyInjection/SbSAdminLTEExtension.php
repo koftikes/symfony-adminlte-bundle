@@ -20,8 +20,8 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(dirname(__DIR__) . '/Resources/config'));
+        $loader->load('services.xml');
     }
 
     /**
@@ -36,7 +36,7 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig(
                 'twig', [
-                    'form_themes' => ['bootstrap_3_layout.html.twig']
+                    'form_themes' => ['bootstrap_3_layout.html.twig'],
                 ]
             );
         }
@@ -45,15 +45,14 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
             $container->prependExtensionConfig(
                 'assetic', [
                     'bundles' => ['SbSAdminLTEBundle'],
-                    'assets' => [
+                    'assets'  => [
                         'bootstrap_min_css_map' => [
                             'inputs' => ['%kernel.root_dir%/../web/components/bootstrap/css/bootstrap.min.css.map'],
-                            'output' => 'css/bootstrap.min.css.map'
-                        ]
-                    ]
+                            'output' => 'css/bootstrap.min.css.map',
+                        ],
+                    ],
                 ]
             );
-
         }
     }
 }
