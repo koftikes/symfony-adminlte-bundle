@@ -3,7 +3,7 @@
 In order to use the layout, your view(s) should extend from the provided base layout
 
 ```
-{% extends 'SbSAdminLTEBundle:Layout:base.html.twig' %}
+{% extends '@SbSAdminLTE/Layout/base.html.twig' %}
 ```
 
 For example you can do it in /app/Resources/views/base.html.twig and all your views will be use the AdminLTE theme.
@@ -72,7 +72,7 @@ For example you can do it in /app/Resources/views/base.html.twig and all your vi
   Contain "Page Title" and "Description of Page". Recommend use AdminLTE macros for define it.
   For example:
 ```twig
-{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
+{% import "@SbSAdminLTE/Layout/main_macros.html.twig" as macros %}
 ...
 {% block header_content %}
     {{ macros.page_header("Homepage", "Short description of homepage.") }}
