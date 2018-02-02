@@ -77,6 +77,7 @@ Next, you will need to create an EventListener to work with the `onShowMenu`
 <?php
 namespace AppBundle\EventListener;
 
+use AppBundle\Component\MenuBuilder;
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
 use SbS\AdminLTEBundle\Model\MenuItemModel;
 
