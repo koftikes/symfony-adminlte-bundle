@@ -120,5 +120,5 @@ _For Symfony 3.4.\*_
 # app/config/services.yml
     AppBundle\EventListener\SidebarMenuEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
+            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
 ```
