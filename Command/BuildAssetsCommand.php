@@ -38,28 +38,28 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
         $yml = new Parser();
         $fs  = new Filesystem();
-        /** @var Kernel $kernel */
-        $kernel = $this->getContainer()->get("kernel");
 
-        $resource      = $kernel->locateResource("@SbSAdminLTEBundle/Resources/");
-        $assets        = $yml->parse(file_get_contents($resource . "config/assets.yml"));
-        $this->package = $kernel->getRootDir() . $assets["package"]["path"];
+        /** @var Kernel $kernel */
+        $kernel        = $this->getContainer()->get("kernel");
+        $adminLteDir   = $kernel->locateResource("@SbSAdminLTEBundle");
+        $assets        = $yml->parse(file_get_contents($adminLteDir . "Resources/config/assets.yml"));
+        $this->package = realpath($adminLteDir . '../..' . $assets["package"]["path"]);
 
         if (!$fs->exists($this->package)) {
             $io->error("AdminLTE package should be installed first.");
             exit;
         }
 
-        $this->processFiles($fs, "{$resource}public/styles/", $assets["css"]);
-        $this->processFiles($fs, "{$resource}public/js/", $assets["js"]);
+        $this->processFiles($fs, "{$adminLteDir}Resources/public/styles/", $assets["css"]);
+        $this->processFiles($fs, "{$adminLteDir}Resources/public/js/", $assets["js"]);
 
         $img = $this->processFolders(realpath($this->package . $assets["images"]));
-        $this->processFiles($fs, "{$resource}public/img/", $img);
+        $this->processFiles($fs, "{$adminLteDir}Resources/public/img/", $img);
 
         foreach ($assets["plugins"] as $plugin) {
             $name = strrchr($plugin, "/");
             $plg  = $this->processFolders(realpath($this->package . $plugin));
-            $this->processFiles($fs, "{$resource}public/plugins{$name}/", $plg);
+            $this->processFiles($fs, "{$adminLteDir}Resources/public/plugins{$name}/", $plg);
         }
 
         $io->success("All assets were successfully installed into bundle directory.");
