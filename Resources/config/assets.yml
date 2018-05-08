@@ -1,5 +1,5 @@
 package:
-  path: "/../vendor/almasaeed2010/adminlte"
+  path: "/almasaeed2010/adminlte"
 
 js:
   main:
