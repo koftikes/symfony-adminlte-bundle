@@ -77,6 +77,7 @@ Next, you will need to create an EventListener to work with the `onShowMenu`
 <?php
 namespace AppBundle\EventListener;
 
+use AppBundle\Component\MenuBuilder;
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
 use SbS\AdminLTEBundle\Model\MenuItemModel;
 
@@ -120,5 +121,5 @@ _For Symfony 3.4.\*_
 # app/config/services.yml
     AppBundle\EventListener\SidebarMenuEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
+            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
 ```

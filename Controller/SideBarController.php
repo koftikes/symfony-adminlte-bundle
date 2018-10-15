@@ -16,7 +16,7 @@ class SideBarController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function collapseAction(Request $request)
+    public function collapse(Request $request)
     {
         $collapse = ($request->get('collapse', false) == "true") ? true : false;
         $request->getSession()->set('sbs_adminlte_sidebar_collapse', $collapse);

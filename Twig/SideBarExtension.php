@@ -65,7 +65,7 @@ class SideBarExtension extends AdminLTE_Extension
         $template = '<a href="#" class="sidebar-toggle" data-toggle="push-menu"><span class="sr-only">Toggle navigation</span></a>';
 
         try {
-            $url = $routing->getUrl('sbs_adminlte_sidebar_collapse');
+            $url = $routing->getPath('sbs_adminlte_sidebar_collapse');
 
             return $environment
                 ->createTemplate($template . '<script>
