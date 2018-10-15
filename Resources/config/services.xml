@@ -16,8 +16,7 @@
             <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <!-- Demo Event Listeners -->
-        <!--
+        <!-- Demo Event Listeners
         <service id="sbs_adminlte.listener.user" class="SbS\AdminLTEBundle\EventListener\UserEventListener">
             <tag name="kernel.event_listener" event="sbs.admin_lte.user" method="onShowUser"/>
         </service>
