@@ -5,7 +5,29 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="sbs_adminlte_sidebar_collapse" path="/sidebar/collapse" methods="POST">
-        <default key="_controller">SbSAdminLTEBundle:SideBar:collapse</default>
+        <default key="_controller">SbS\AdminLTEBundle\Controller\SideBarController::collapse</default>
     </route>
 
+    <!-- Demo Routing
+    <route id="sbs_adminlte_all_notifications" path="/notifications" methods="GET">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\NotificationController::main</default>
+    </route>
+    <route id="sbs_adminlte_show_notification" path="/notification/{noticeId}" methods="GET,POST">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\NotificationController:notice</default>
+    </route>
+
+    <route id="sbs_adminlte_all_tasks" path="/tasks" methods="GET">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\TaskController::main</default>
+    </route>
+    <route id="sbs_adminlte_show_task" path="/task/{taskId}" methods="GET,POST">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\TaskController::task</default>
+    </route>
+
+    <route id="sbs_adminlte_user_profile" path="/user/profile" methods="GET,POST">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\UserController::profile</default>
+    </route>
+    <route id="sbs_adminlte_user_logout" path="/logout" methods="GET">
+        <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\UserController::logout</default>
+    </route>
+    -->
 </routes>
