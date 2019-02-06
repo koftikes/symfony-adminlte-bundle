@@ -3,7 +3,7 @@ AdminLTEBundle
 
 AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony. This bundle integrates several commonly used JavaScripts and Font-Awesome.
 
-From version 1.1.x bundle use AdminLTE 2.4.x all theme changes you can find in official [AdminLTE blog][2].
+From version, the 1.5.x bundle does not require AsseticBundle in since it deprecated.
 
 ## Installation
 
@@ -67,38 +67,6 @@ Add the following lines at `app/config/routing.yml`:
 
 ### Notice for Symfony 2.8 and higher
 
-_Notice: This bundle requires assetic, but it isn't shipped with Symfony anymore since version 2.8._
-
-Assetic will be installed as require bundle and you should enable bundle in your kernel:
-
-```php
-<?php
-// app/AppKernel.php
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-        new SbS\AdminLTEBundle\SbSAdminLTEBundle(),
-    );
-}
-```
-
-Add the following lines at `app/config/config.yml`:
-
-    # Assetic Configuration
-    assetic:
-        debug: "%kernel.debug%"
-        use_controller: "%kernel.debug%"
-        filters:
-            cssrewrite: ~
-
-And following lines at `app/config/config_dev.yml`:
-
-    # Assetic Configuration
-    assetic:
-        use_controller: false
-
 _For Symfony 3.4 and higher next snippet should be added to `framework` section._
 
     framework:
@@ -106,18 +74,15 @@ _For Symfony 3.4 and higher next snippet should be added to `framework` section.
         templating:
             engines: ['twig']
 
-#### Install Assets and Dump Assetic (run the following two commands):
+#### Install Assets (run the following command):
 
 _For Symfony 2.8.\*_
 
     php ./app/console assets:install
-    php ./app/console assetic:dump
 
 _For Symfony 3.4.\*_
 
     php ./bin/console assets:install
-    php ./bin/console assetic:dump
-
 
 ### Changing default values template
 
@@ -150,11 +115,11 @@ There are a few values you could change for sure without need to touch anything 
 
 ## Next Steps
 
-* [Using Layout](Resources/docs/layout.md)
-* [Navbar User](Resources/docs/navbar_user.md)
-* [Navbar Task List](Resources/docs/navbar_task_list.md)
-* [Navbar Notification List](Resources/docs/navbar_notification_list.md)
-* [Sidebar Menu](Resources/docs/sidebar_menu.md)
+* [Using Layout](src/Resources/docs/layout.md)
+* [Navbar User](src/Resources/docs/navbar_user.md)
+* [Navbar Task List](src/Resources/docs/navbar_task_list.md)
+* [Navbar Notification List](src/Resources/docs/navbar_notification_list.md)
+* [Sidebar Menu](src/Resources/docs/sidebar_menu.md)
 
 That's all. Enjoy.
 

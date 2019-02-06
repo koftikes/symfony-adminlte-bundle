@@ -1,0 +1,63 @@
+package:
+    path: "/vendor/almasaeed2010/adminlte"
+
+js:
+    main:
+        "AdminLTE.min.js": "/dist/js/adminlte.min.js"
+
+css:
+    main:
+        - "/dist/css/AdminLTE.min.css"
+    skins:
+        - "/dist/css/skins/_all-skins.min.css"
+        - "/dist/css/skins/skin-black.min.css"
+        - "/dist/css/skins/skin-black-light.min.css"
+        - "/dist/css/skins/skin-blue.min.css"
+        - "/dist/css/skins/skin-blue-light.min.css"
+        - "/dist/css/skins/skin-green.min.css"
+        - "/dist/css/skins/skin-green-light.min.css"
+        - "/dist/css/skins/skin-purple.min.css"
+        - "/dist/css/skins/skin-purple-light.min.css"
+        - "/dist/css/skins/skin-red.min.css"
+        - "/dist/css/skins/skin-red-light.min.css"
+        - "/dist/css/skins/skin-yellow.min.css"
+        - "/dist/css/skins/skin-yellow-light.min.css"
+
+images: "/dist/img"
+
+# Plugins from bower_components and plugins folders
+plugins:
+    - "/bower_components/bootstrap-colorpicker"
+    - "/bower_components/bootstrap-datepicker"
+    - "/bower_components/bootstrap-daterangepicker"
+    - "/bower_components/bootstrap-slider"
+    - "/bower_components/bootstrap-timepicker"
+    - "/bower_components/chart.js"
+    - "/bower_components/ckeditor"
+    - "/bower_components/datatables.net"
+    - "/bower_components/datatables.net-bs"
+    - "/bower_components/eve-raphael"
+    - "/bower_components/fastclick"
+    - "/bower_components/Flot"
+    - "/bower_components/fullcalendar"
+    - "/bower_components/inputmask"
+    - "/bower_components/ion.rangeSlider"
+    - "/bower_components/Ionicons"
+    - "/bower_components/jquery-knob"
+    - "/bower_components/jquery-slimscroll"
+    - "/bower_components/jquery-sparkline"
+    - "/bower_components/jvectormap"
+    - "/bower_components/mocha"
+    - "/bower_components/moment"
+    - "/bower_components/morris.js"
+    - "/bower_components/PACE"
+    - "/bower_components/raphael"
+    - "/bower_components/select2"
+    - "/plugins/bootstrap-slider"
+    - "/plugins/bootstrap-wysihtml5"
+    - "/plugins/iCheck"
+    - "/plugins/input-mask"
+    - "/plugins/jvectormap"
+    - "/plugins/pace"
+    - "/plugins/timepicker"
+

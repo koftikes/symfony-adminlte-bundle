@@ -5,12 +5,11 @@ nbproject
 .project
 .settings
 
-# windows thumbnail cache
+#thumbnail && cache
 Thumbs.db
-# Mac DS_Store Files
 .DS_Store
-# composer itself is not needed
-composer.phar
+composer.lock
 
 # project public files build with assetc command
-/Resources/public
+src/Resources/public
+vendor
