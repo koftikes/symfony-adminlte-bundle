@@ -17,7 +17,7 @@
     {# Use standard twig block stylesheets to include CSS that is used on single page. #}
     {% block stylesheets %}{% endblock %}
     {% block corejs %}
-        <script src="{{ asset('bundles/sbsadminlte/components/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/sbsadminlte/components/jquery-ui/jquery-ui.min.js') }}"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
@@ -33,7 +33,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} sidebar-mini login-page {{ sidebar_collapse(app.session) }}">
+<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} sidebar-mini login-page {{ sidebar_collapse(app.request) }}">
 {% block inner_body %}
     <div class="wrapper">
         {% block admin_lte_header %}

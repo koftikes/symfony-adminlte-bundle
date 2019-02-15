@@ -23,23 +23,23 @@ class SideBarExtension extends AdminLTE_Extension
         return [
             new \Twig_SimpleFunction(
                 'sidebar_menu',
-                [$this, 'SidebarMenuFunction'],
+                [$this, 'sidebarMenu'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new \Twig_SimpleFunction(
                 'sidebar_toggle_button',
-                [$this, 'ToggleButtonFunction'],
+                [$this, 'toggleButton'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new \Twig_SimpleFunction(
                 'sidebar_collapse',
-                [$this, 'SidebarCollapseFunction'],
+                [$this, 'sidebarCollapse'],
                 ['is_safe' => ['html'], 'needs_environment' => false]
             ),
         ];
     }
 
-    public function SidebarMenuFunction(\Twig_Environment $environment, Request $request)
+    public function sidebarMenu(\Twig_Environment $environment, Request $request)
     {
         if ($this->checkListener(ThemeEvents::SIDEBAR_MENU) == false) {
             return '';
@@ -58,7 +58,7 @@ class SideBarExtension extends AdminLTE_Extension
      * @throws \Throwable
      * @throws \Twig_Error_Runtime
      */
-    public function ToggleButtonFunction(\Twig_Environment $environment)
+    public function toggleButton(\Twig_Environment $environment)
     {
         /** @var RoutingExtension $routing */
         $routing  = $environment->getExtension(RoutingExtension::class);
@@ -85,12 +85,8 @@ class SideBarExtension extends AdminLTE_Extension
      *
      * @return string
      */
-    public function SidebarCollapseFunction(Session $session)
+    public function sidebarCollapse(Request $request)
     {
-        if ($session->get('sbs_adminlte_sidebar_collapse') == true) {
-            return 'sidebar-collapse';
-        }
-
-        return '';
+        return ($request->cookies->get('sbs_adminlte_sidebar_collapse', 'false') === 'true') ? 'sidebar-collapse' : '';
     }
 }
