@@ -17,11 +17,6 @@
     "require": {
         "php": ">=7.1",
         "symfony/symfony": "^3.0|^4.0",
-        "oomphinc/composer-installers-extender": "^1.1",
-        "components/jquery": "^3.3",
-        "components/jqueryui": "~1.12",
-        "components/bootstrap": "^3.3",
-        "components/font-awesome": "^4.7",
         "almasaeed2010/adminlte": "^2.4"
     },
     "require-dev": {

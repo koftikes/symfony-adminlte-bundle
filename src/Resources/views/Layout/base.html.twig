@@ -9,19 +9,23 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {% block corestyles %}
-        <link rel="stylesheet" href="{{ asset('components/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/font-awesome/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/styles/AdminLTE.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/styles/skins/_all-skins.min.css') }}">
     {% endblock %}
     {# Use standard twig block stylesheets to include CSS that is used on single page. #}
     {% block stylesheets %}{% endblock %}
     {% block corejs %}
-        <script src="{{ asset('components/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('components/jqueryui/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('components/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/sbsadminlte/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-        <script src="{{ asset('bundles/sbsadminlte/plugins/fastclick/lib/fastclick.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/components/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/components/jquery-ui/jquery-ui.min.js') }}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="{{ asset('bundles/sbsadminlte/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/components/fastclick/lib/fastclick.js') }}"></script>
         <script src="{{ asset('bundles/sbsadminlte/js/AdminLTE.min.js') }}"></script>
     {% endblock %}
     {% block javascripts_head %}{% endblock %}

@@ -26,7 +26,8 @@ css:
 images: "/dist/img"
 
 # Plugins from bower_components and plugins folders
-plugins:
+components:
+    - "/bower_components/bootstrap"
     - "/bower_components/bootstrap-colorpicker"
     - "/bower_components/bootstrap-datepicker"
     - "/bower_components/bootstrap-daterangepicker"
@@ -39,13 +40,16 @@ plugins:
     - "/bower_components/eve-raphael"
     - "/bower_components/fastclick"
     - "/bower_components/Flot"
+    - "/bower_components/font-awesome"
     - "/bower_components/fullcalendar"
     - "/bower_components/inputmask"
     - "/bower_components/ion.rangeSlider"
     - "/bower_components/Ionicons"
+    - "/bower_components/jquery"
     - "/bower_components/jquery-knob"
     - "/bower_components/jquery-slimscroll"
     - "/bower_components/jquery-sparkline"
+    - "/bower_components/jquery-ui"
     - "/bower_components/jvectormap"
     - "/bower_components/mocha"
     - "/bower_components/moment"
@@ -53,6 +57,8 @@ plugins:
     - "/bower_components/PACE"
     - "/bower_components/raphael"
     - "/bower_components/select2"
+
+plugins:
     - "/plugins/bootstrap-slider"
     - "/plugins/bootstrap-wysihtml5"
     - "/plugins/iCheck"

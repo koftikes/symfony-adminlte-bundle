@@ -19,6 +19,9 @@ class BuildAssetsCommand extends Command
 {
     protected static $defaultName = 'sbs:admin-lte:build-assets';
 
+    /**
+     * @var string - Path to almasaeed2010 package in vendors folder
+     */
     protected $package;
 
     /**
@@ -75,13 +78,23 @@ class BuildAssetsCommand extends Command
         $img = $this->processFolders((string) realpath($this->package . $assets['images']));
         $this->processFiles("{$resource}public/img/", $img);
 
-        foreach ($assets['plugins'] as $plugin) {
-            $name = strrchr($plugin, '/');
-            $plg  = $this->processFolders((string) realpath($this->package . $plugin));
-            $this->processFiles("{$resource}public/plugins{$name}/", $plg);
-        }
+        $this->processPlugins($assets['components'], "{$resource}public/components");
+        $this->processPlugins($assets['plugins'], "{$resource}public/plugins");
 
         $io->success('All assets were successfully installed into bundle directory.');
+    }
+
+    /**
+     * @param array  $folder
+     * @param string $new_path
+     */
+    private function processPlugins(array $folder, $new_path)
+    {
+        foreach ($folder as $sub_folder) {
+            $name   = strrchr($sub_folder, '/');
+            $result = $this->processFolders((string) realpath($this->package . $sub_folder));
+            $this->processFiles("{$new_path}{$name}/", $result);
+        }
     }
 
     /**
