@@ -6,12 +6,9 @@ use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use Symfony\Bridge\Twig\Extension\RoutingExtension;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * Class SideBarExtension
- *
- * @package SbS\AdminLTEBundle\Twig
+ * Class SideBarExtension.
  */
 class SideBarExtension extends AdminLTE_Extension
 {
@@ -41,7 +38,7 @@ class SideBarExtension extends AdminLTE_Extension
 
     public function sidebarMenu(\Twig_Environment $environment, Request $request)
     {
-        if ($this->checkListener(ThemeEvents::SIDEBAR_MENU) == false) {
+        if (false === $this->checkListener(ThemeEvents::SIDEBAR_MENU)) {
             return '';
         }
 
@@ -54,9 +51,10 @@ class SideBarExtension extends AdminLTE_Extension
     /**
      * @param \Twig_Environment $environment
      *
-     * @return string
      * @throws \Throwable
      * @throws \Twig_Error_Runtime
+     *
+     * @return string
      */
     public function toggleButton(\Twig_Environment $environment)
     {
@@ -87,6 +85,6 @@ class SideBarExtension extends AdminLTE_Extension
      */
     public function sidebarCollapse(Request $request)
     {
-        return ($request->cookies->get('sbs_adminlte_sidebar_collapse', 'false') === 'true') ? 'sidebar-collapse' : '';
+        return ('true' === $request->cookies->get('sbs_adminlte_sidebar_collapse', 'false')) ? 'sidebar-collapse' : '';
     }
 }

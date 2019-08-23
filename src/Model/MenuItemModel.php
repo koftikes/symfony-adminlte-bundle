@@ -3,14 +3,12 @@
 namespace SbS\AdminLTEBundle\Model;
 
 /**
- * Class MenuItemModel
- *
- * @package SbS\AdminLTEBundle\Model
+ * Class MenuItemModel.
  */
 class MenuItemModel implements MenuItemInterface
 {
     /**
-     * @var integer|string
+     * @var int|string
      */
     private $id;
 
@@ -50,7 +48,7 @@ class MenuItemModel implements MenuItemInterface
     private $active = false;
 
     /**
-     * @var MenuItemInterface|null
+     * @var null|MenuItemInterface
      */
     private $parent;
 
@@ -61,12 +59,12 @@ class MenuItemModel implements MenuItemInterface
      */
     public function __construct($label)
     {
-        $this->id    = uniqid();
+        $this->id    = \uniqid();
         $this->label = $label;
     }
 
     /**
-     * @param integer|string $id
+     * @param int|string $id
      *
      * @return $this
      */
@@ -78,7 +76,7 @@ class MenuItemModel implements MenuItemInterface
     }
 
     /**
-     * @return integer|string
+     * @return int|string
      */
     public function getId()
     {
@@ -183,7 +181,7 @@ class MenuItemModel implements MenuItemInterface
     }
 
     /**
-     * @param MenuItemInterface|null $parent
+     * @param null|MenuItemInterface $parent
      *
      * @return $this
      */
@@ -195,7 +193,7 @@ class MenuItemModel implements MenuItemInterface
     }
 
     /**
-     * @return MenuItemInterface|null
+     * @return null|MenuItemInterface
      */
     public function getParent()
     {
@@ -203,7 +201,7 @@ class MenuItemModel implements MenuItemInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getActive()
     {

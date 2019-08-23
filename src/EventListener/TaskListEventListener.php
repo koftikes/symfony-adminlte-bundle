@@ -6,9 +6,7 @@ use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Model\Demo\TaskModel;
 
 /**
- * Class TaskListEventListener
- *
- * @package SbS\AdminLTEBundle\EventListener
+ * Class TaskListEventListener.
  */
 class TaskListEventListener
 {

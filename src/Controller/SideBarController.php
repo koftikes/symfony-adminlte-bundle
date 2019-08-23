@@ -4,13 +4,11 @@ namespace SbS\AdminLTEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class SideBarController
- *
- * @package SbS\AdminLTEBundle\Controller
+ * Class SideBarController.
  */
 class SideBarController extends Controller
 {
@@ -23,7 +21,7 @@ class SideBarController extends Controller
     {
         $collapse = $request->get('collapse', 'false');
         $response = new JsonResponse($collapse);
-        $response->headers->setCookie(new Cookie('sbs_adminlte_sidebar_collapse', $collapse, strtotime('now + 1 year')));
+        $response->headers->setCookie(new Cookie('sbs_adminlte_sidebar_collapse', $collapse, \strtotime('now + 1 year')));
 
         return $response;
     }

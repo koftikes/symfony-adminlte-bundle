@@ -5,9 +5,7 @@ namespace SbS\AdminLTEBundle\Controller\Demo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class TaskController
- *
- * @package SbS\AdminLTEBundle\Controller\Demo
+ * Class TaskController.
  */
 class TaskController extends Controller
 {

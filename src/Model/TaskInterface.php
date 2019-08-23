@@ -3,43 +3,44 @@
 namespace SbS\AdminLTEBundle\Model;
 
 /**
- * Interface TaskInterface
- *
- * @package SbS\AdminLTEBundle\Model
+ * Interface TaskInterface.
  */
 interface TaskInterface
 {
     /**
-     *  Colors of tasks
+     *  Colors of tasks.
      */
     const COLOR_BLUE   = 'blue';
+
     const COLOR_GREEN  = 'green';
+
     const COLOR_RED    = 'red';
+
     const COLOR_YELLOW = 'yellow';
 
     /**
-     * Should return Task identifier
+     * Should return Task identifier.
      *
-     * @return integer
+     * @return int
      */
     public function getId();
 
     /**
-     * Should return Task Title
+     * Should return Task Title.
      *
      * @return string
      */
     public function getTitle();
 
     /**
-     * Should return Progress of Task for progress bar
+     * Should return Progress of Task for progress bar.
      *
-     * @return integer
+     * @return int
      */
     public function getProgress();
 
     /**
-     * Should return Task color
+     * Should return Task color.
      *
      * @return string
      */

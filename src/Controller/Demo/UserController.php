@@ -5,9 +5,7 @@ namespace SbS\AdminLTEBundle\Controller\Demo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class ProfileController
- *
- * @package SbS\AdminLTEBundle\Controller\Demo
+ * Class ProfileController.
  */
 class UserController extends Controller
 {

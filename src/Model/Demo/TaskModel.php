@@ -5,14 +5,12 @@ namespace SbS\AdminLTEBundle\Model\Demo;
 use SbS\AdminLTEBundle\Model\TaskInterface;
 
 /**
- * Class TaskModel
- *
- * @package SbS\AdminLTEBundle\Model\Demo
+ * Class TaskModel.
  */
 class TaskModel implements TaskInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 

@@ -7,9 +7,7 @@ use SbS\AdminLTEBundle\Model\Demo\NotificationModel;
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 
 /**
- * Class NotificationListEventListener
- *
- * @package SbS\AdminLTEBundle\EventListener
+ * Class NotificationListEventListener.
  */
 class NotificationListEventListener
 {
@@ -36,5 +34,4 @@ class NotificationListEventListener
             new NotificationModel(5, 'Some More Default Notices'),
         ];
     }
-
 }

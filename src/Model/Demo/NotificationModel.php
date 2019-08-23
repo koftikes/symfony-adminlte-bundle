@@ -5,14 +5,12 @@ namespace SbS\AdminLTEBundle\Model\Demo;
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 
 /**
- * Class NotificationModel
- *
- * @package SbS\AdminLTEBundle\Model\Demo
+ * Class NotificationModel.
  */
 class NotificationModel implements NotificationInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 

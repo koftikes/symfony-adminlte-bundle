@@ -3,24 +3,25 @@
 namespace SbS\AdminLTEBundle\Model;
 
 /**
- * Interface MenuItemInterface
- *
- * @package SbS\AdminLTEBundle\Model
+ * Interface MenuItemInterface.
  */
 interface MenuItemInterface
 {
     /**
-     *  Colors of badge
+     *  Colors of badge.
      */
     const COLOR_BLUE   = 'blue';
+
     const COLOR_GREEN  = 'green';
+
     const COLOR_RED    = 'red';
+
     const COLOR_YELLOW = 'yellow';
 
     /**
-     * Should return MenuItem identifier
+     * Should return MenuItem identifier.
      *
-     * @return integer
+     * @return int
      */
     public function getId();
 
@@ -45,11 +46,11 @@ interface MenuItemInterface
     public function getChildren();
 
     /**
-     * @param MenuItemInterface|null $parent
+     * @param null|MenuItemInterface $parent
      *
      * @return mixed
      */
-    public function setParent(MenuItemInterface $parent = null);
+    public function setParent(self $parent = null);
 
     /**
      * @return mixed
@@ -67,14 +68,14 @@ interface MenuItemInterface
     public function getBadges();
 
     /**
-     * @param boolean $active
+     * @param bool $active
      *
      * @return mixed
      */
     public function setActive($active);
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getActive();
 }

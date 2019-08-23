@@ -2,9 +2,9 @@
 
 namespace SbS\AdminLTEBundle\Composer;
 
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\PhpExecutableFinder;
 use Composer\Script\Event;
+use Symfony\Component\Process\PhpExecutableFinder;
+use Symfony\Component\Process\Process;
 
 class ScriptHandler
 {
@@ -41,7 +41,7 @@ class ScriptHandler
      */
     protected static function getOptions(Event $event)
     {
-        $options                    = array_merge(static::$options, $event->getComposer()->getPackage()->getExtra());
+        $options                    = \array_merge(static::$options, $event->getComposer()->getPackage()->getExtra());
         $options['process-timeout'] = $event->getComposer()->getConfig()->get('process-timeout');
 
         return $options;
@@ -53,7 +53,7 @@ class ScriptHandler
      * @param Event  $event      The command event
      * @param string $actionName The name of the action
      *
-     * @return string|null The path to the console directory, null if not found.
+     * @return null|string the path to the console directory, null if not found
      */
     protected static function getConsoleDir(Event $event, $actionName)
     {
@@ -63,12 +63,14 @@ class ScriptHandler
             if (!static::hasDirectory($event, 'symfony-bin-dir', $options['symfony-bin-dir'], $actionName)) {
                 return false;
             }
+
             return $options['symfony-bin-dir'];
         }
 
         if (!static::hasDirectory($event, 'symfony-app-dir', $options['symfony-app-dir'], 'execute command')) {
             return false;
         }
+
         return $options['symfony-app-dir'];
     }
 
@@ -81,36 +83,52 @@ class ScriptHandler
      */
     protected static function useNewDirectoryStructure(array $options)
     {
-        return isset($options['symfony-var-dir']) && is_dir($options['symfony-var-dir']);
+        return isset($options['symfony-var-dir']) && \is_dir($options['symfony-var-dir']);
     }
 
     protected static function hasDirectory(Event $event, $configName, $path, $actionName)
     {
-        if (!is_dir($path)) {
-            $event->getIO()->write(sprintf('The %s (%s) specified in composer.json was not found in %s, can not %s.',
-                $configName, $path, getcwd(), $actionName));
+        if (!\is_dir($path)) {
+            $event->getIO()->write(\sprintf(
+                'The %s (%s) specified in composer.json was not found in %s, can not %s.',
+                $configName,
+                $path,
+                \getcwd(),
+                $actionName
+            ));
+
             return false;
         }
+
         return true;
     }
 
     protected static function executeCommand(Event $event, $consoleDir, $cmd, $timeout = 300)
     {
-        $php     = escapeshellarg(static::getPhp(false));
-        $phpArgs = implode(' ', array_map('escapeshellarg', static::getPhpArguments()));
-        $console = escapeshellarg($consoleDir . '/console');
+        $php     = \escapeshellarg(static::getPhp(false));
+        $phpArgs = \implode(' ', \array_map('escapeshellarg', static::getPhpArguments()));
+        $console = \escapeshellarg($consoleDir . '/console');
         if ($event->getIO()->isDecorated()) {
             $console .= ' --ansi';
         }
 
-        $process = new Process($php . ($phpArgs ? ' ' . $phpArgs : '') . ' ' . $console . ' ' . $cmd, null, null, null,
-            $timeout);
+        $process = new Process(
+            $php . ($phpArgs ? ' ' . $phpArgs : '') . ' ' . $console . ' ' . $cmd,
+            null,
+            null,
+            null,
+            $timeout
+        );
         $process->run(function ($type, $buffer) use ($event) {
             $event->getIO()->write($buffer, false);
         });
         if (!$process->isSuccessful()) {
-            throw new \RuntimeException(sprintf("An error occurred when executing the \"%s\" command:\n\n%s\n\n%s.",
-                escapeshellarg($cmd), $process->getOutput(), $process->getErrorOutput()));
+            throw new \RuntimeException(\sprintf(
+                "An error occurred when executing the \"%s\" command:\n\n%s\n\n%s.",
+                \escapeshellarg($cmd),
+                $process->getOutput(),
+                $process->getErrorOutput()
+            ));
         }
     }
 
@@ -120,15 +138,15 @@ class ScriptHandler
         $arguments = [];
 
         $phpFinder = new PhpExecutableFinder();
-        if (method_exists($phpFinder, 'findArguments')) {
+        if (\method_exists($phpFinder, 'findArguments')) {
             $arguments = $phpFinder->findArguments();
         }
 
-        if ($env = (string) getenv('COMPOSER_ORIGINAL_INIS')) {
-            $paths = explode(PATH_SEPARATOR, $env);
-            $ini   = array_shift($paths);
+        if ($env = (string) \getenv('COMPOSER_ORIGINAL_INIS')) {
+            $paths = \explode(PATH_SEPARATOR, $env);
+            $ini   = \array_shift($paths);
         } else {
-            $ini = php_ini_loaded_file();
+            $ini = \php_ini_loaded_file();
         }
 
         if ($ini) {

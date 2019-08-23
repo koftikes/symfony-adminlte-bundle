@@ -5,9 +5,7 @@ namespace SbS\AdminLTEBundle\Controller\Demo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class NotificationController
- *
- * @package SbS\AdminLTEBundle\Controller\Demo
+ * Class NotificationController.
  */
 class NotificationController extends Controller
 {

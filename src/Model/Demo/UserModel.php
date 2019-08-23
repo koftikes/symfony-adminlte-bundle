@@ -5,14 +5,12 @@ namespace SbS\AdminLTEBundle\Model\Demo;
 use SbS\AdminLTEBundle\Model\UserInterface;
 
 /**
- * Class UserModel
- *
- * @package SbS\AdminLTEBundle\Model\Demo
+ * Class UserModel.
  */
 class UserModel implements UserInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -64,6 +62,7 @@ class UserModel implements UserInterface
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -83,6 +82,7 @@ class UserModel implements UserInterface
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -102,6 +102,7 @@ class UserModel implements UserInterface
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -141,6 +142,7 @@ class UserModel implements UserInterface
     public function setMemberSince(\DateTime $memberSince)
     {
         $this->memberSince = $memberSince;
+
         return $this;
     }
 
