@@ -3,13 +3,11 @@
 namespace SbS\AdminLTEBundle\EventListener;
 
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
-use SbS\AdminLTEBundle\Model\MenuItemModel;
 use SbS\AdminLTEBundle\Model\MenuItemInterface;
+use SbS\AdminLTEBundle\Model\MenuItemModel;
 
 /**
- * Class SidebarMenuEventListener
- *
- * @package SbS\AdminLTEBundle\EventListener
+ * Class SidebarMenuEventListener.
  */
 class SidebarMenuEventListener
 {

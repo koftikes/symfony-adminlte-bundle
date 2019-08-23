@@ -6,9 +6,7 @@ use SbS\AdminLTEBundle\Model\NotificationInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class NotificationListEvent
- *
- * @package SbS\AdminLTEBundle\Event
+ * Class NotificationListEvent.
  */
 class NotificationListEvent extends Event
 {
@@ -55,6 +53,6 @@ class NotificationListEvent extends Event
      */
     public function getTotal()
     {
-        return $this->total === 0 ? count($this->notifications) : $this->total;
+        return 0 === $this->total ? \count($this->notifications) : $this->total;
     }
 }

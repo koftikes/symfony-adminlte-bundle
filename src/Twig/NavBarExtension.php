@@ -10,9 +10,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class NavBarExtension
- *
- * @package SbS\AdminLTEBundle\Twig
+ * Class NavBarExtension.
  */
 class NavBarExtension extends AdminLTE_Extension
 {
@@ -65,14 +63,15 @@ class NavBarExtension extends AdminLTE_Extension
     /**
      * @param \Twig_Environment $environment
      *
-     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return string
      */
     public function showNotifications(\Twig_Environment $environment)
     {
-        if ($this->checkListener(ThemeEvents::NOTICES) === false) {
+        if (false === $this->checkListener(ThemeEvents::NOTICES)) {
             return '';
         }
 
@@ -88,14 +87,15 @@ class NavBarExtension extends AdminLTE_Extension
     /**
      * @param \Twig_Environment $environment
      *
-     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return string
      */
     public function showTasks(\Twig_Environment $environment)
     {
-        if ($this->checkListener(ThemeEvents::TASKS) === false) {
+        if (false === $this->checkListener(ThemeEvents::TASKS)) {
             return '';
         }
 
@@ -111,14 +111,15 @@ class NavBarExtension extends AdminLTE_Extension
     /**
      * @param \Twig_Environment $environment
      *
-     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     *
+     * @return string
      */
     public function showUserAccount(\Twig_Environment $environment)
     {
-        if ($this->checkListener(ThemeEvents::USER) === false) {
+        if (false === $this->checkListener(ThemeEvents::USER)) {
             return '';
         }
 
@@ -134,22 +135,23 @@ class NavBarExtension extends AdminLTE_Extension
      * @param string            $alt
      * @param string            $class
      *
-     * @return string
      * @throws \Exception
      * @throws \Throwable
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Syntax
+     *
+     * @return string
      */
     public function showAvatar(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
-        if (!$image || !file_exists($image)) {
+        if (!$image || !\file_exists($image)) {
             $image = $this->projectDir
-                . (version_compare(Kernel::VERSION, '4.0') < 0 ? '/web' : '/public')
+                . (\version_compare(Kernel::VERSION, '4.0') < 0 ? '/web' : '/public')
                 . '/bundles/sbsadminlte/img/avatar.png';
         }
 
-        if ($image = file_get_contents($image)) {
-            $image = 'data:image/png;base64,' . base64_encode($image);
+        if ($image = \file_get_contents($image)) {
+            $image = 'data:image/png;base64,' . \base64_encode($image);
         }
 
         return $environment

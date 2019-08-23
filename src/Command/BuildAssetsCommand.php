@@ -61,7 +61,7 @@ class BuildAssetsCommand extends Command
         $application = $this->getApplication();
         $kernel      = $application->getKernel();
         $resource    = $kernel->locateResource('@SbSAdminLTEBundle/Resources/');
-        $resource    = is_array($resource) ? $resource[0] : $resource;
+        $resource    = \is_array($resource) ? $resource[0] : $resource;
 
         $yml           = new Parser();
         $assets        = $yml->parseFile($resource . 'config/assets.yml');
@@ -75,7 +75,7 @@ class BuildAssetsCommand extends Command
         $this->processFiles("{$resource}public/styles/", $assets['css']);
         $this->processFiles("{$resource}public/js/", $assets['js']);
 
-        $img = $this->processFolders((string) realpath($this->package . $assets['images']));
+        $img = $this->processFolders((string) \realpath($this->package . $assets['images']));
         $this->processFiles("{$resource}public/img/", $img);
 
         $this->processPlugins($assets['components'], "{$resource}public/components");
@@ -91,14 +91,14 @@ class BuildAssetsCommand extends Command
     private function processPlugins(array $folder, $new_path)
     {
         foreach ($folder as $sub_folder) {
-            $name   = strrchr($sub_folder, '/');
-            $result = $this->processFolders((string) realpath($this->package . $sub_folder));
+            $name   = \mb_strrchr($sub_folder, '/');
+            $result = $this->processFolders((string) \realpath($this->package . $sub_folder));
             $this->processFiles("{$new_path}{$name}/", $result);
         }
     }
 
     /**
-     * Copy assets into bundle resource directory
+     * Copy assets into bundle resource directory.
      *
      * @param string $path
      * @param array  $structure
@@ -109,11 +109,11 @@ class BuildAssetsCommand extends Command
             $this->filesystem->remove($path);
         }
         foreach ($structure as $dir => $files) {
-            $sub_dir = ($dir === 'main') ? $path : $path . $dir;
+            $sub_dir = ('main' === $dir) ? $path : $path . $dir;
             $this->filesystem->exists($sub_dir) or $this->filesystem->mkdir($sub_dir);
             foreach ($files as $name => $file) {
-                $file_path = is_file($file) ? $file : realpath($this->package . $file);
-                $file_name = is_string($name) ? $name : basename($file_path);
+                $file_path = \is_file($file) ? $file : \realpath($this->package . $file);
+                $file_name = \is_string($name) ? $name : \basename($file_path);
                 $this->filesystem->copy($file_path, $sub_dir . DIRECTORY_SEPARATOR . $file_name);
             }
         }
@@ -136,6 +136,7 @@ class BuildAssetsCommand extends Command
             $key           = $file->getRelativePath();
             $files[$key][] = $file->getRealPath();
         }
+
         return $files;
     }
 }
