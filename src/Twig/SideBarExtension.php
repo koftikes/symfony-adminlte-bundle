@@ -81,7 +81,7 @@ class SideBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param Session $session
+     * @param Request $request
      *
      * @return string
      */

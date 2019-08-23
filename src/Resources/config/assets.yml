@@ -31,8 +31,6 @@ components:
     - "/bower_components/bootstrap-colorpicker"
     - "/bower_components/bootstrap-datepicker"
     - "/bower_components/bootstrap-daterangepicker"
-    - "/bower_components/bootstrap-slider"
-    - "/bower_components/bootstrap-timepicker"
     - "/bower_components/chart.js"
     - "/bower_components/ckeditor"
     - "/bower_components/datatables.net"
@@ -56,6 +54,7 @@ components:
     - "/bower_components/morris.js"
     - "/bower_components/PACE"
     - "/bower_components/raphael"
+    - "/bower_components/seiyria-bootstrap-slider"
     - "/bower_components/select2"
 
 plugins:
@@ -66,4 +65,3 @@ plugins:
     - "/plugins/jvectormap"
     - "/plugins/pace"
     - "/plugins/timepicker"
-
