@@ -1,0 +1,70 @@
+{% extends '@SbSAdminLTE/Layout/simple.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block page_content %}
+    <div class="login-box">
+        {% block admin_lte_logo %}
+            <div class="login-logo">
+                <a href="/"><b>Admin</b>LTE</a>
+            </div>
+        {% endblock %}
+        <div class="login-box-body">
+            {% block login_form %}
+                <p class="login-box-msg">Sign in to start your session</p>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    {% endif %}
+                    <div class="form-group has-feedback">
+                        <input class="form-control" type="text" id="username" name="_username"
+                               value="{{ last_username }}" required="required" autocomplete="username"
+                               placeholder="{{ 'security.login.username'|trans }}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input class="form-control" type="password" id="password" name="_password" required="required"
+                               autocomplete="current-password" placeholder="{{ 'security.login.password'|trans }}">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                                    {{ 'security.login.remember_me'|trans }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <button class="btn btn-primary btn-block btn-flat" type="submit" id="_submit"
+                                    name="_submit">{{ 'security.login.submit'|trans }}</button>
+                        </div>
+                    </div>
+                </form>
+            {% endblock %}
+            {% block social_login %}{% endblock %}
+            <a href="{{ path("fos_user_resetting_request") }}">I forgot my password</a><br>
+            <a href="{{ path("fos_user_registration_register") }}" class="text-center">Register a new membership</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("bundles/sbsadminlte/plugins/iCheck/square/blue.css") }}"/>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset("bundles/sbsadminlte/plugins/iCheck/icheck.min.js") }}"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+{% endblock %}

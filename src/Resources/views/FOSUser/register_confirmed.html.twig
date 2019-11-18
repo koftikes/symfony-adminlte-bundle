@@ -1,0 +1,16 @@
+{% extends '@SbSAdminLTE/Layout/simple.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block page_content %}
+    <div class="login-box">
+        {% block admin_lte_logo %}
+            <div class="register-logo"><a href="/"><b>Admin</b>LTE</a></div>
+        {% endblock %}
+        <div class="login-box-body">
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+            {% if targetUrl %}
+                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
