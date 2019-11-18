@@ -78,7 +78,6 @@ class BuildAssetsCommand extends Command
         $img = $this->processFolders((string) \realpath($this->package . $assets['images']));
         $this->processFiles("{$resource}public/img/", $img);
 
-        $this->processPlugins($assets['components'], "{$resource}public/components");
         $this->processPlugins($assets['plugins'], "{$resource}public/plugins");
 
         $io->success('All assets were successfully installed into bundle directory.');
