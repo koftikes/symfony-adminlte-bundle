@@ -47,7 +47,7 @@
                 {# Header Navbar: style can be found in header.less #}
                 <nav class="navbar navbar-static-top" role="navigation">
                     {{ sidebar_toggle_button() }}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <div class="navbar-custom-menu">
                             <ul class="nav navbar-nav">
                                 {% block admin_lte_navbar %}
@@ -65,7 +65,7 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 {% block admin_lte_sidebar %}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         {{ sidebar_menu(app.request) }}
                     {% endif %}
                 {% endblock %}
