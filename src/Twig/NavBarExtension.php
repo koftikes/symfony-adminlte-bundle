@@ -8,6 +8,11 @@ use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+use Twig\TwigFunction;
 
 /**
  * Class NavBarExtension.
@@ -32,27 +37,27 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @return array
+     * @return array<TwigFunction>
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'nav_bar_notifications',
                 [$this, 'showNotifications'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'nav_bar_tasks',
                 [$this, 'showTasks'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'nav_bar_user_account',
                 [$this, 'showUserAccount'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'user_avatar',
                 [$this, 'showAvatar'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
@@ -61,15 +66,15 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param \Twig_Environment $environment
+     * @param Environment $environment
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      *
      * @return string
      */
-    public function showNotifications(\Twig_Environment $environment)
+    public function showNotifications(Environment $environment)
     {
         if (false === $this->checkListener(ThemeEvents::NOTICES)) {
             return '';
@@ -85,15 +90,15 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param \Twig_Environment $environment
+     * @param Environment $environment
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      *
      * @return string
      */
-    public function showTasks(\Twig_Environment $environment)
+    public function showTasks(Environment $environment)
     {
         if (false === $this->checkListener(ThemeEvents::TASKS)) {
             return '';
@@ -109,15 +114,15 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param \Twig_Environment $environment
+     * @param Environment $environment
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws SyntaxError
+     * @throws RuntimeError
      *
      * @return string
      */
-    public function showUserAccount(\Twig_Environment $environment)
+    public function showUserAccount(Environment $environment)
     {
         if (false === $this->checkListener(ThemeEvents::USER)) {
             return '';
@@ -130,19 +135,17 @@ class NavBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param \Twig_Environment $environment
-     * @param string            $image
-     * @param string            $alt
-     * @param string            $class
+     * @param Environment $environment
+     * @param string      $image
+     * @param string      $alt
+     * @param string      $class
      *
-     * @throws \Exception
-     * @throws \Throwable
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws SyntaxError
      *
      * @return string
      */
-    public function showAvatar(\Twig_Environment $environment, $image, $alt = '', $class = 'img-circle')
+    public function showAvatar(Environment $environment, $image, $alt = '', $class = 'img-circle')
     {
         if (!$image || !\file_exists($image)) {
             $image = $this->projectDir
