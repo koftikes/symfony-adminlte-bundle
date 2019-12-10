@@ -1,7 +1,6 @@
 language: php
 
 php:
-    - '7.1'
     - '7.2'
 
 before_script:
@@ -9,5 +8,5 @@ before_script:
     - composer install --prefer-dist --no-interaction
 
 script:
-    - vendor/bin/phpstan analyse -c phpstan.neon -l max src
+    - vendor/bin/phpstan analyse --no-progress -c phpstan.neon -l max src
     - vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --using-cache=no

@@ -6,6 +6,11 @@ use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use Symfony\Bridge\Twig\Extension\RoutingExtension;
 use Symfony\Component\HttpFoundation\Request;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+use Twig\TwigFunction;
 
 /**
  * Class SideBarExtension.
@@ -13,22 +18,22 @@ use Symfony\Component\HttpFoundation\Request;
 class SideBarExtension extends AdminLTE_Extension
 {
     /**
-     * @return array
+     * @return array<TwigFunction>
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'sidebar_menu',
                 [$this, 'sidebarMenu'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'sidebar_toggle_button',
                 [$this, 'toggleButton'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'sidebar_collapse',
                 [$this, 'sidebarCollapse'],
                 ['is_safe' => ['html'], 'needs_environment' => false]
@@ -36,7 +41,17 @@ class SideBarExtension extends AdminLTE_Extension
         ];
     }
 
-    public function sidebarMenu(\Twig_Environment $environment, Request $request)
+    /**
+     * @param Environment $environment
+     * @param Request     $request
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     *
+     * @return string
+     */
+    public function sidebarMenu(Environment $environment, Request $request)
     {
         if (false === $this->checkListener(ThemeEvents::SIDEBAR_MENU)) {
             return '';
@@ -49,14 +64,11 @@ class SideBarExtension extends AdminLTE_Extension
     }
 
     /**
-     * @param \Twig_Environment $environment
-     *
-     * @throws \Throwable
-     * @throws \Twig_Error_Runtime
+     * @param Environment $environment
      *
      * @return string
      */
-    public function toggleButton(\Twig_Environment $environment)
+    public function toggleButton(Environment $environment)
     {
         /** @var RoutingExtension $routing */
         $routing  = $environment->getExtension(RoutingExtension::class);
@@ -68,8 +80,8 @@ class SideBarExtension extends AdminLTE_Extension
             return $environment
                 ->createTemplate($template . '<script>
                     $(function () {
-                        $(document).on("click", ".sidebar-toggle", function () {
-                            event.preventDefault();
+                        $(document).on("click", ".sidebar-toggle", function (e) {
+                            e.preventDefault();
                             $.post("{{ url }}", {collapse: $("body").hasClass("sidebar-collapse")} );
                         });
                     });</script>')->render(['url' => $url]);
