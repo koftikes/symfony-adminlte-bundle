@@ -7,7 +7,9 @@
     <title>{% block title %}AdminLTE{% endblock %}</title>
     {# Tell the browser to be responsive to screen width. #}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block favicons %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% endblock %}
     {% block corestyles %}
         <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/font-awesome/css/font-awesome.min.css') }}">
@@ -29,9 +31,10 @@
         <script src="{{ asset('bundles/sbsadminlte/js/AdminLTE.min.js') }}"></script>
     {% endblock %}
     {% block javascripts_head %}{% endblock %}
-    <!-- Google Font -->
+    {% block fonts %}
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    {% endblock %}
 </head>
 <body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} sidebar-mini login-page {{ sidebar_collapse(app.request) }}">
 {% block inner_body %}
@@ -47,7 +50,7 @@
                 {# Header Navbar: style can be found in header.less #}
                 <nav class="navbar navbar-static-top" role="navigation">
                     {{ sidebar_toggle_button() }}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <div class="navbar-custom-menu">
                             <ul class="nav navbar-nav">
                                 {% block admin_lte_navbar %}
@@ -65,7 +68,7 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 {% block admin_lte_sidebar %}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         {{ sidebar_menu(app.request) }}
                     {% endif %}
                 {% endblock %}

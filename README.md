@@ -1,9 +1,13 @@
 AdminLTEBundle
 ==============
+[![Build Status](https://travis-ci.com/koftikes/symfony-adminlte-bundle.svg?branch=master)](https://travis-ci.com/koftikes/symfony-adminlte-bundle)
 
 AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony. This bundle integrates several commonly used JavaScripts and Font-Awesome.
 
-From version, the 1.5.x bundle does not require AsseticBundle in since it deprecated.
+From version, the 1.5.x:
+* does not require AsseticBundle in since it deprecated.
+* was locked to version PHP 7.2. 
+* was locked to symfony >=3.4 
 
 ## Installation
 
