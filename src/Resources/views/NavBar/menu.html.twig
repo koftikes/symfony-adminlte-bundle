@@ -1,0 +1,15 @@
+<ul class="navbar-nav">
+    {% for item in menu %}
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{'/' in item.route ? item.route : path(item.route, item.routeArgs) }}" class="nav-link {{ item.active ? 'active' : '' }}">
+                <i class="nav-icon {{ item.icon|default('') }}"></i>
+                {{ item.label }}
+                {% if item.badges %}
+                    {% for text, color in item.badges %}
+                        <span class="right badge badge-{{ color }}">{{ text }}</span>
+                    {% endfor %}
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

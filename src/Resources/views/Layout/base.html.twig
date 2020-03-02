@@ -4,101 +4,120 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}AdminLTE{% endblock %}</title>
-    {# Tell the browser to be responsive to screen width. #}
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>{% block title %}AdminLTE 3{% endblock %}</title>
+    {# Tell the browser to be responsive to screen width #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block favicons %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {% endblock %}
     {% block corestyles %}
-        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/bootstrap/dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/components/font-awesome/css/font-awesome.min.css') }}">
+        {# overlayScrollbars #}
+        <link rel="stylesheet"
+              href="{{ asset('bundles/sbsadminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+        {# AdminLTE Style #}
         <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/styles/AdminLTE.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/styles/skins/_all-skins.min.css') }}">
     {% endblock %}
     {# Use standard twig block stylesheets to include CSS that is used on single page. #}
     {% block stylesheets %}{% endblock %}
     {% block corejs %}
-        <script src="{{ asset('bundles/sbsadminlte/components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/sbsadminlte/components/jquery-ui/jquery-ui.min.js') }}"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-            $.widget.bridge('uibutton', $.ui.button);
-        </script>
-        <script src="{{ asset('bundles/sbsadminlte/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/sbsadminlte/components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-        <script src="{{ asset('bundles/sbsadminlte/components/fastclick/lib/fastclick.js') }}"></script>
+        {# jQuery #}
+        <script src="{{ asset('bundles/sbsadminlte/plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/sbsadminlte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        {# Resolve conflict in jQuery UI tooltip with Bootstrap tooltip#}
+        <script>$.widget.bridge('uibutton', $.ui.button);</script>
+        {# Bootstrap 4 #}
+        <script src="{{ asset('bundles/sbsadminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        {# overlayScrollbars #}
+        <script src="{{ asset('bundles/sbsadminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        {# AdminLTE App #}
         <script src="{{ asset('bundles/sbsadminlte/js/AdminLTE.min.js') }}"></script>
     {% endblock %}
     {% block javascripts_head %}{% endblock %}
     {% block fonts %}
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        {# Font Awesome #}
+        <link rel="stylesheet" href="{{ asset('bundles/sbsadminlte/plugins/fontawesome-free/css/all.min.css') }}">
+        {# Ionicons #}
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        {# Google Font: Source Sans Pro #}
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {% endblock %}
 </head>
-<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} sidebar-mini login-page {{ sidebar_collapse(app.request) }}">
-{% block inner_body %}
+{% block body %}
+    <body class="hold-transition sidebar-mini {{ sidebar_collapse(app.request) }}">
     <div class="wrapper">
-        {% block admin_lte_header %}
-            <header class="main-header">
-                {% block admin_lte_logo %}
-                    <a href="/" class="logo">
-                        <span class="logo-mini"><b>A</b>LT</span>
-                        <span class="logo-lg"><b>Admin</b>LTE</span>
-                    </a>
-                {% endblock %}
-                {# Header Navbar: style can be found in header.less #}
-                <nav class="navbar navbar-static-top" role="navigation">
-                    {{ sidebar_toggle_button() }}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <div class="navbar-custom-menu">
-                            <ul class="nav navbar-nav">
-                                {% block admin_lte_navbar %}
-                                    {{ nav_bar_notifications() }}
-                                    {{ nav_bar_tasks() }}
-                                    {{ nav_bar_user_account() }}
-                                {% endblock %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                </nav>
-            </header>
+        {# Navbar #}
+        {% block admin_lte_navbar %}
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {{ sidebar_toggle_button() }}
+                    </li>
+                </ul>
+                {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {# Top navbar links #}
+                    {{ navbar_menu(app.request) }}
+                    {# Right navbar links #}
+                    <ul class="navbar-nav ml-auto">
+                        {# Notifications Dropdown Menu #}
+                        {{ navbar_notifications() }}
+                        {# Tasks Dropdown Menu #}
+                        {{ navbar_tasks() }}
+                        {# User Dropdown Menu #}
+                        {{ navbar_user_account() }}
+                    </ul>
+                {% endif %}
+            </nav>
         {% endblock %}
-        {# Left side column. Contains the logo and sidebar: style can be found in sidebar.less #}
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                {% block admin_lte_sidebar %}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        {{ sidebar_menu(app.request) }}
-                    {% endif %}
-                {% endblock %}
-            </section>
+        {# Main Sidebar Container #}
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            {% block admin_lte_logo %}
+                <a href="{{ path('homepage') }}" class="brand-link">
+                    <img src="{{ asset('bundles/sbsadminlte/img/AdminLTELogo.png') }}"
+                         alt="AdminLTE Logo"
+                         class="brand-image img-circle elevation-3"
+                         style="opacity: .8">
+                    <span class="brand-text font-weight-light">AdminLTE 3</span>
+                </a>
+            {% endblock %}
+            {# Sidebar #}
+            {% block admin_lte_sidebar %}
+                {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="sidebar">
+                        <nav class="mt-2">
+                            {{ sidebar_menu(app.request) }}
+                        </nav>
+                    </div>
+                {% endif %}
+            {% endblock %}
         </aside>
-        {# Content wrapper. Contains the content of the page. #}
         <div class="content-wrapper">
-            {% block content %}
+            {# Content Header (Page header) #}
+            {% block header_content %}
                 <section class="content-header">
-                    {% block header_content %}
-                        {{ macros.page_header("Page Title", "Description of Page") }}
-                    {% endblock %}
-                    {% block admin_lte_breadcrumb %}{% endblock %}
-                </section>
-                <section class="content">
-                    {{ include("@SbSAdminLTE/Layout/flash_message.html.twig") }}
-                    {% block page_content %}{% endblock %}
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">{{ macros.page_header("Page Title", "Description of Page") }}</div>
+                            <div class="col-sm-6">{% block admin_lte_breadcrumb %}{% endblock %}</div>
+                        </div>
+                    </div>
                 </section>
             {% endblock %}
+            <section class="content">
+                {{ include("@SbSAdminLTE/Layout/flash_message.html.twig") }}
+                {% block page_content %}{% endblock %}
+            </section>
         </div>
         {% block admin_lte_footer %}
             <footer class="main-footer">
-                <div class="pull-right hidden-xs"><b>Version</b> 2.3.8</div>
-                <strong>Copyright &copy; 2014-2018 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong>
+                <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.2</div>
+                <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
                 All rights reserved.
             </footer>
         {% endblock %}
     </div>
+    {# Use standard twig block javascripts to include JS that is used on single page. #}
+    {% block javascripts %}{% endblock %}
+    </body>
 {% endblock %}
-{# Use standard twig block javascripts to include JS that is used on single page. #}
-{% block javascripts %}{% endblock %}
-</body>
 </html>

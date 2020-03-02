@@ -10,47 +10,37 @@ class MenuItemModel implements MenuItemInterface
     /**
      * @var int|string
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $label;
+    protected $label;
 
     /**
      * @var string
      */
-    private $route;
+    protected $route;
 
     /**
      * @var array
      */
-    private $routeArgs = [];
-
-    /**
-     * @var array
-     */
-    private $children = [];
+    protected $routeArgs = [];
 
     /**
      * @var string
      */
-    private $icon = '';
+    protected $icon = '';
 
     /**
      * @var array
      */
-    private $badges = [];
+    protected $badges = [];
 
     /**
      * @var bool
      */
-    private $active = false;
-
-    /**
-     * @var null|MenuItemInterface
-     */
-    private $parent;
+    protected $active = false;
 
     /**
      * MenuItemModel constructor.
@@ -144,63 +134,6 @@ class MenuItemModel implements MenuItemInterface
     }
 
     /**
-     * @param array $children
-     *
-     * @return $this
-     */
-    public function setChildren($children)
-    {
-        /** @var MenuItemInterface $child */
-        foreach ($children as $child) {
-            $child->setParent($this);
-        }
-        $this->children = $children;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * @param MenuItemInterface $child
-     *
-     * @return $this
-     */
-    public function addChild(MenuItemInterface $child)
-    {
-        $child->setParent($this);
-        $this->children[] = $child;
-
-        return $this;
-    }
-
-    /**
-     * @param null|MenuItemInterface $parent
-     *
-     * @return $this
-     */
-    public function setParent(MenuItemInterface $parent = null)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * @return null|MenuItemInterface
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
      * @return bool
      */
     public function getActive()
@@ -215,9 +148,6 @@ class MenuItemModel implements MenuItemInterface
      */
     public function setActive($active)
     {
-        if ($this->parent instanceof MenuItemInterface) {
-            $this->parent->setActive($active);
-        }
         $this->active = $active;
 
         return $this;

@@ -16,7 +16,7 @@
             <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <!-- Demo Event Listeners
+        <!-- Demo Event Listeners -->
         <service id="sbs_adminlte.listener.user" class="SbS\AdminLTEBundle\EventListener\UserEventListener">
             <tag name="kernel.event_listener" event="sbs.admin_lte.user" method="onShowUser"/>
         </service>
@@ -29,6 +29,9 @@
         <service id="sbs_adminlte.listener.sidebar_menu" class="SbS\AdminLTEBundle\EventListener\SidebarMenuEventListener">
             <tag name="kernel.event_listener" event="sbs.admin_lte.sidebar_menu" method="onShowMenu"/>
         </service>
-        -->
+        <service id="sbs_adminlte.listener.navbar_menu" class="SbS\AdminLTEBundle\EventListener\NavbarMenuEventListener">
+            <tag name="kernel.event_listener" event="sbs.admin_lte.navbar_menu" method="onShowMenu"/>
+        </service>
+        <!-- -->
     </services>
 </container>

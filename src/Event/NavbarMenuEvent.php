@@ -2,14 +2,14 @@
 
 namespace SbS\AdminLTEBundle\Event;
 
-use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface;
+use SbS\AdminLTEBundle\Model\MenuItemInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class SidebarMenuEvent.
  */
-class SidebarMenuEvent extends Event
+class NavbarMenuEvent extends Event
 {
     /**
      * @var Request
@@ -22,7 +22,7 @@ class SidebarMenuEvent extends Event
     protected $menuItems = [];
 
     /**
-     * SidebarMenuEvent constructor.
+     * NavbarMenuEvent constructor.
      *
      * @param Request $request
      */
@@ -32,9 +32,9 @@ class SidebarMenuEvent extends Event
     }
 
     /**
-     * @param SidebarMenuItemInterface $item
+     * @param MenuItemInterface $item
      */
-    public function addItem(SidebarMenuItemInterface $item)
+    public function addItem(MenuItemInterface $item)
     {
         $this->menuItems[$item->getId()] = $item;
     }
@@ -55,14 +55,10 @@ class SidebarMenuEvent extends Event
      */
     protected function activateByRoute($route, $items)
     {
-        /** @var SidebarMenuItemInterface $item */
+        /** @var MenuItemInterface $item */
         foreach ($items as $item) {
-            if ($item->getChildren()) {
-                $this->activateByRoute($route, $item->getChildren());
-            } else {
-                if ($item->getRoute() === $route) {
-                    $item->setActive(true);
-                }
+            if ($item->getRoute() === $route) {
+                $item->setActive(true);
             }
         }
 

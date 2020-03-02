@@ -26,4 +26,9 @@ class ThemeEvents
      * Used to receive the sidebar menu data.
      */
     const SIDEBAR_MENU = 'sbs.admin_lte.sidebar_menu';
+
+    /**
+     * Used to receive the navbar menu data.
+     */
+    const NAVBAR_MENU = 'sbs.admin_lte.navbar_menu';
 }

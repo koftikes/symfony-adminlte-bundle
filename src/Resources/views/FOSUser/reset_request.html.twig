@@ -8,21 +8,25 @@
                 <a href="/"><b>Admin</b>LTE</a>
             </div>
         {% endblock %}
-        <div class="login-box-body">
-            {% block reset_request_form %}
-                <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-                    <div class="form-group has-feedback">
-                        <input class="form-control" type="text" id="username" name="username" required="required"
-                               placeholder="{{ 'resetting.request.username'|trans }}"/>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary btn-block btn-flat" type="submit">
-                            {{ 'resetting.request.submit'|trans }}
-                        </button>
-                    </div>
-                </form>
-            {% endblock %}
+        <div class="card">
+            <div class="card-body login-card-body">
+                {% block reset_request_form %}
+                    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                        <div class="form-group input-group mb-3">
+                            <input class="form-control" type="text" id="username" name="username" required="required"
+                                   placeholder="{{ 'resetting.request.username'|trans }}"/>
+                            <div class="input-group-append">
+                                <div class="input-group-text"><span class="fas fa-user"></span></div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-block btn-flat" type="submit">
+                                {{ 'resetting.request.submit'|trans }}
+                            </button>
+                        </div>
+                    </form>
+                {% endblock %}
+            </div>
         </div>
     </div>
 {% endblock %}

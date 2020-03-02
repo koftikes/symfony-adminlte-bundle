@@ -72,7 +72,7 @@ class SideBarExtension extends AdminLTE_Extension
     {
         /** @var RoutingExtension $routing */
         $routing  = $environment->getExtension(RoutingExtension::class);
-        $template = '<a href="#" class="sidebar-toggle" data-toggle="push-menu"><span class="sr-only">Toggle navigation</span></a>';
+        $template = '<a class="nav-link sidebar-toggle" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>';
 
         try {
             $url = $routing->getPath('sbs_adminlte_sidebar_collapse');

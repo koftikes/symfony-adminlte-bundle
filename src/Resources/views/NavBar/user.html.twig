@@ -1,33 +1,36 @@
-<li class="dropdown user user-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<li class="nav-item dropdown user user-menu">
+    <a class="nav-link" data-toggle="dropdown" href="#">
         {{ user_avatar(user.avatar, user.name, "user-image") }}
         <span class="hidden-xs">{{ user.name }} ({{ user.username }})</span>
     </a>
-    <ul class="dropdown-menu">
-        <li class="user-header">
+    <div class="dropdown-menu dropdown-menu-right widget-user">
+        <div class="widget-user-header bg-info">
+            <h3 class="widget-user-username">{{ user.name }}</h3>
+            <h5 class="widget-user-desc">{{ user.title }}</h5>
+        </div>
+        <div class="widget-user-image">
             {{ user_avatar(user.avatar, user.name) }}
-            <p>
-                {{ user.title }}
-                {% if user.memberSince %}
-                    <small>Member since {{ user.memberSince|date('d.m.Y') }}</small>
-                {% endif %}
-            </p>
-        </li>
-        {% if user.info %}
-            <li class="user-body">
-                <div class="col-xs-12 text-center">
-                    {{ user.info|raw }}
+        </div>
+        <div class="card-footer">
+            {% if user.memberSince %}
+                <div class="row">
+                    <div class="col-sm-12 description-block">
+                        <small>Member since {{ user.memberSince|date('d.m.Y') }}</small>
+                        {% if user.info %}
+                            <p>{{ user.info|raw }}</p>
+                        {% endif %}
+                    </div>
                 </div>
-            </li>
-        {% endif %}
-        <li class="user-footer">
-            <div class="pull-left">
-                <a href="{{ path("sbs_adminlte_user_profile") }}"
-                   class="btn btn-default btn-flat">Profile</a>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="{{ path("sbs_adminlte_user_profile") }}" class="float-left btn btn-default">Profile</a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ path('sbs_adminlte_user_logout') }}" class="float-right btn btn-default">Sign out</a>
+                </div>
             </div>
-            <div class="pull-right">
-                <a href="{{ path('sbs_adminlte_user_logout') }}" class="btn btn-default btn-flat">Sign out</a>
-            </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 </li>
+

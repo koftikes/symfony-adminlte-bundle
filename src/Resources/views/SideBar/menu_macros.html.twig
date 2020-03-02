@@ -1,40 +1,42 @@
 {% macro render_menu_item(item) %}
     {% import _self as this %}
     {% if item.route or item.children %}
-        <li id="{{ item.id }}" class="{{ item.active ? 'active' : '' }} {{ item.children ? 'treeview' : '' }}">
+        <li id="{{ item.id }}" class="nav-item {{ item.children ?  item.active ? 'menu-open has-treeview': 'has-treeview' : '' }}">
             {{ this.render_link(item) }}
         </li>
     {% else %}
-        <li class="header">{{ item.label }}</li>
+        <li class="nav-header">{{ item.label }}</li>
     {% endif %}
 {% endmacro %}
 
-{% macro render_link(link) %}
+{% macro render_link(item) %}
     {% import _self as this %}
-    <a href="{{ link.children ? '#' : '/' in link.route ? link.route : path(link.route, link.routeArgs) }}">
-        <i class="{{ link.icon|default('fa fa-circle-o') }}"></i>
-        <span>{{ link.label }}</span>
-        {% if link.children %}
-            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-        {% else %}
-            {% if link.badges %}
-                {% for text, color in link.badges %}
-                    <small class="label pull-right bg-{{ color }}">{{ text }}</small>
-                {% endfor %}
+    <a href="{{ item.children ? '#' : '/' in item.route ? item.route : path(item.route, item.routeArgs) }}" class="nav-link {{ item.active and not item.children ? 'active' : '' }}">
+        <i class="nav-icon {{ item.icon|default('far fa-circle') }}"></i>
+        <p>
+            {{ item.label }}
+            {% if item.children %}
+                <i class="right fas fa-angle-left"></i>
+            {% else %}
+                {% if item.badges %}
+                    {% for text, color in item.badges %}
+                        <span class="right badge badge-{{ color }}">{{ text }}</span>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
-        {% endif %}
+        </p>
     </a>
-    {% if link.children %}
-        {{ this.render_children(link.children) }}
+    {% if item.children %}
+        {{ this.render_children(item.children) }}
     {% endif %}
 {% endmacro %}
 
 {% macro render_children(children) %}
     {% import _self as this %}
-    <ul class="treeview-menu">
-        {% for child in children %}
-            <li class="{{ child.active ? 'active':'' }} {{ child.children ? 'treeview' : '' }}" id="{{ child.id }}">
-                {{ this.render_link(child) }}
+    <ul class="nav nav-treeview">
+        {% for item in children %}
+            <li class="nav-item {{ item.children ?  item.active ? 'menu-open has-treeview': 'has-treeview' : '' }}" id="{{ item.id }}">
+                {{ this.render_link(item) }}
             </li>
         {% endfor %}
     </ul>

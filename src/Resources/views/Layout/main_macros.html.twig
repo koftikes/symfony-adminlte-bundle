@@ -7,31 +7,24 @@
     </h1>
 {% endmacro %}
 
-{% macro box_header(title, collapse, remove, type) %}
-    <div class="box-header">
-        <h3 class="box-title">{{ title }}</h3>
-        {{ block('box_header_buttons') }}
+{% macro card_header(title, collapse, remove) %}
+    <div class="card-header">
+        <h3 class="card-title">{{ title }}</h3>
+        {{ block('card_header_buttons') }}
     </div>
 {% endmacro %}
 
-{% block box_collapse %}
-    <button class="btn btn-{{ type|default('info') }} btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-    </button>
-{% endblock %}
-
-{% block box_remove %}
-    <button class="btn btn-{{ type|default('info') }} btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-{% endblock %}
-
-{% block box_header_buttons %}
-    {% if collapse or remove %}
-        <div class="box-tools pull-right">
-            {% if collapse %}
-                {{ block('box_collapse') }}
-            {% endif %}
-            {% if remove %}
-                {{ block('box_remove') }}
-            {% endif %}
-        </div>
-    {% endif %}
+{% block card_header_buttons %}
+    <div class="card-tools">
+        {% if collapse %}
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        {% endif %}
+        {% if remove %}
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        {% endif %}
+    </div>
 {% endblock %}

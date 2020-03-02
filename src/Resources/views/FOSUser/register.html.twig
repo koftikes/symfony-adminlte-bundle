@@ -8,38 +8,50 @@
                 <a href="/"><b>Admin</b>LTE</a>
             </div>
         {% endblock %}
-        <div class="register-box-body">
-            <p class="login-box-msg">Register a new membership</p>
-            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-            <div class="form-group has-feedback">
-                {{ form_row(form.email, {'label': false,'attr': {'placeholder':  'form.email'|trans }}) }}
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                {{ form_row(form.username, {'label': false,'attr': {'placeholder': 'form.username'|trans }}) }}
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <div class="form-group input-group mb-3">
+                    {{ form_widget(form.email, {'attr': {'placeholder':  'form.email'|trans }}) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                </div>
+                <div class="form-group input-group mb-3">
+                    {{ form_widget(form.username, {'attr': {'placeholder': 'form.username'|trans }}) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-user"></span></div>
+                    </div>
+                </div>
 
-            <div class="form-group has-feedback">
-                {{ form_row(form.plainPassword.first, {'label': false,'attr': {'placeholder': 'form.password'|trans }}) }}
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                {{ form_row(form.plainPassword.second, {'label': false,'attr': {'placeholder': 'form.password_confirmation'|trans }}) }}
-                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <a href="{{ path("fos_user_security_login") }}" class="text-center">I already have a membership</a>
+                <div class="form-group input-group mb-3">
+                    {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'form.password'|trans }}) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-lock"></span></div>
+                    </div>
                 </div>
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">
-                        {{ 'registration.submit'|trans }}
-                    </button>
+                <div class="form-group input-group mb-3">
+                    {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'form.password_confirmation'|trans }}) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-lock"></span></div>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-8">
+                        <a href="{{ path("fos_user_security_login") }}" class="text-center">
+                            I already have a membership
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {{ 'registration.submit'|trans }}
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+                {% block social_login %}{% endblock %}
             </div>
-            {{ form_end(form) }}
-            {% block social_login %}{% endblock %}
         </div>
     </div>
 {% endblock %}

@@ -10,6 +10,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -59,6 +60,7 @@ class BuildAssetsCommand extends Command
 
         /** @var Application $application */
         $application = $this->getApplication();
+        /** @var Kernel $kernel */
         $kernel      = $application->getKernel();
         $resource    = $kernel->locateResource('@SbSAdminLTEBundle/Resources/');
         $resource    = \is_array($resource) ? $resource[0] : $resource;

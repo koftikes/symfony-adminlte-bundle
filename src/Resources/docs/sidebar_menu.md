@@ -11,7 +11,7 @@ If you want (for some reason) to use personal id your have to create a MenuItemM
 <?php
 namespace AppBundle\Model;
 
-use SbS\AdminLTEBundle\Model\MenuItemInterface as ThemeMenuItem
+use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface as ThemeMenuItem
 
 class MenuItemModel implements ThemeMenuItem {
     // ...
@@ -27,38 +27,38 @@ As recommendations you can create own class to building menu. Also you can check
 <?php
 namespace AppBundle\Component;
 
-use SbS\AdminLTEBundle\Model\MenuItemModel;
-use SbS\AdminLTEBundle\Model\MenuItemInterface;
+use SbS\AdminLTEBundle\Model\SidebarMenuItemModel;
+use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface;
 
 class MenuBuilder {
 
     public function getMenu() {
 
         // Menu Label
-        $label_main = new MenuItemModel('MAIN NAVIGATION');
+        $label_main = new SidebarMenuItemModel('MAIN NAVIGATION');
 
         // One Level Menu
-        $item_info = (new MenuItemModel('Information'))
+        $item_info = (new SidebarMenuItemModel('Information'))
             ->setRoute('sbs_adminlte_all_notifications')
             ->setIcon('fa fa-circle-o text-blue')
-            ->addBadge('17', MenuItemInterface::COLOR_RED)
+            ->addBadge('17', SidebarMenuItemInterface::COLOR_RED)
             ->addBadge('new');
 
         // Multi Level Menu
-        $item_multilevel = (new MenuItemModel('Multilevel'))
+        $item_multilevel = (new SidebarMenuItemModel('Multilevel'))
             ->setIcon('fa fa-share')
             ->addChild(
-                (new MenuItemModel('Level One'))
+                (new SidebarMenuItemModel('Level One'))
                     ->addChild(
-                        (new MenuItemModel('Level Two'))
+                        (new SidebarMenuItemModel('Level Two'))
                             ->setChildren([
-                                (new MenuItemModel('Level Three'))->setRoute('sbs_adminlte_user_profile'),
-                                (new MenuItemModel('Level Three'))->setRoute('sbs_adminlte_all_tasks')
+                                (new SidebarMenuItemModel('Level Three'))->setRoute('sbs_adminlte_user_profile'),
+                                (new SidebarMenuItemModel('Level Three'))->setRoute('sbs_adminlte_all_tasks')
                             ])
                     )
-                    ->addChild((new MenuItemModel('Level Two'))->setRoute('sbs_adminlte_all_notifications'))
+                    ->addChild((new SidebarMenuItemModel('Level Two'))->setRoute('sbs_adminlte_all_notifications'))
             )
-            ->addChild((new MenuItemModel('Level One'))->setRoute('sbs_adminlte_user_profile')->addBadge('new'));
+            ->addChild((new SidebarMenuItemModel('Level One'))->setRoute('sbs_adminlte_user_profile')->addBadge('new'));
         // ...
 
         return [
@@ -79,7 +79,7 @@ namespace AppBundle\EventListener;
 
 use AppBundle\Component\MenuBuilder;
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
-use SbS\AdminLTEBundle\Model\MenuItemModel;
+use SbS\AdminLTEBundle\Model\SidebarMenuItemModel;
 
 class SidebarMenuEventListener {
 

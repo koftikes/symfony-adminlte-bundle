@@ -2,11 +2,13 @@
 
 namespace SbS\AdminLTEBundle\Twig;
 
+use SbS\AdminLTEBundle\Event\NavbarMenuEvent;
 use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
 use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Kernel;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -43,17 +45,22 @@ class NavBarExtension extends AdminLTE_Extension
     {
         return [
             new TwigFunction(
-                'nav_bar_notifications',
+                'navbar_menu',
+                [$this, 'navbarMenu'],
+                ['is_safe' => ['html'], 'needs_environment' => true]
+            ),
+            new TwigFunction(
+                'navbar_notifications',
                 [$this, 'showNotifications'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new TwigFunction(
-                'nav_bar_tasks',
+                'navbar_tasks',
                 [$this, 'showTasks'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
             new TwigFunction(
-                'nav_bar_user_account',
+                'navbar_user_account',
                 [$this, 'showUserAccount'],
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
@@ -63,6 +70,28 @@ class NavBarExtension extends AdminLTE_Extension
                 ['is_safe' => ['html'], 'needs_environment' => true]
             ),
         ];
+    }
+
+    /**
+     * @param Environment $environment
+     * @param Request     $request
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     *
+     * @return string
+     */
+    public function navbarMenu(Environment $environment, Request $request)
+    {
+        if (false === $this->checkListener(ThemeEvents::NAVBAR_MENU)) {
+            return '';
+        }
+
+        /** @var NavbarMenuEvent $menuEvent */
+        $menuEvent = $this->getDispatcher()->dispatch(ThemeEvents::NAVBAR_MENU, new NavbarMenuEvent($request));
+
+        return $environment->render('@SbSAdminLTE/NavBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }
 
     /**
@@ -145,7 +174,7 @@ class NavBarExtension extends AdminLTE_Extension
      *
      * @return string
      */
-    public function showAvatar(Environment $environment, $image, $alt = '', $class = 'img-circle')
+    public function showAvatar(Environment $environment, $image, $alt = '', $class = 'img-circle elevation-2')
     {
         if (!$image || !\file_exists($image)) {
             $image = $this->projectDir
