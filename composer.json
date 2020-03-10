@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "symfony/symfony": "^3.4||>=4.2.12,<4.3",
+        "symfony/symfony": "~3.4.35||~4.2.12",
         "twig/extensions": "^1.5",
         "almasaeed2010/adminlte": "^2.4"
     },
