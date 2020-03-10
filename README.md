@@ -1,8 +1,9 @@
 AdminLTEBundle
 ==============
 
-AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony.
-This bundle integrates several commonly used JavaScripts and Font-Awesome.
+!!! This version is no longer maintained. Consider upgrading to sbs/symfony-adminlte-bundle@1.5 or higher !!!
+
+AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony. This bundle integrates several commonly used JavaScripts and Font-Awesome.
 
 ## Installation
 
