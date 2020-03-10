@@ -10,6 +10,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -44,13 +45,16 @@ class BuildAssetsCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Install AdminLTE assets into bundle public directory.');
     }
 
     /**
-     * {@inheritdoc}
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
+     * @return null|int|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -59,6 +63,7 @@ class BuildAssetsCommand extends Command
 
         /** @var Application $application */
         $application = $this->getApplication();
+        /** @var Kernel $kernel */
         $kernel      = $application->getKernel();
         $resource    = $kernel->locateResource('@SbSAdminLTEBundle/Resources/');
         $resource    = \is_array($resource) ? $resource[0] : $resource;
@@ -88,7 +93,7 @@ class BuildAssetsCommand extends Command
      * @param array  $folder
      * @param string $new_path
      */
-    private function processPlugins(array $folder, $new_path)
+    private function processPlugins(array $folder, $new_path): void
     {
         foreach ($folder as $sub_folder) {
             $name   = \mb_strrchr($sub_folder, '/');
@@ -103,7 +108,7 @@ class BuildAssetsCommand extends Command
      * @param string $path
      * @param array  $structure
      */
-    private function processFiles($path, $structure)
+    private function processFiles($path, $structure): void
     {
         if ($this->filesystem->exists($path)) {
             $this->filesystem->remove($path);

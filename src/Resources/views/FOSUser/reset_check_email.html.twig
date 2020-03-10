@@ -4,7 +4,7 @@
 {% block page_content %}
     <div class="register-box">
         {% block admin_lte_logo %}
-            <div class="register-logo"><a href="/"><b>Admin</b>LTE</a></div>
+            <div class="register-logo"><a href="{{ path('homepage') }}"><b>Admin</b>LTE</a></div>
         {% endblock %}
         <div class="register-box-body">
             <p>{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}</p>

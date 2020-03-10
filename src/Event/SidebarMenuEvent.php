@@ -33,10 +33,14 @@ class SidebarMenuEvent extends Event
 
     /**
      * @param MenuItemInterface $item
+     *
+     * @return $this
      */
     public function addItem(MenuItemInterface $item)
     {
         $this->menuItems[$item->getId()] = $item;
+
+        return $this;
     }
 
     /**

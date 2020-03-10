@@ -12,8 +12,10 @@ class UserEventListener
 {
     /**
      * @param UserEvent $event
+     *
+     * @throws \Exception
      */
-    public function onShowUser(UserEvent $event)
+    public function onShowUser(UserEvent $event): void
     {
         $user = new UserModel('demo_user');
         $user

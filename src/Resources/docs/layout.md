@@ -14,15 +14,11 @@ For example you can do it in /app/Resources/views/base.html.twig and all your vi
   Located in tag `<head>`. Using for title of page.
 
 #### corestyles
-  Located in tag `<head>`. Using for main theme CSS, on prod environment all files will be merged in one `admin-lte-bundle.min.css`.
-  Please don't forget to use `{{ parent() }}` if you want adding your stylesheets in theme. For example:
+  Located in tag `<head>`. Please don't forget to use `{{ parent() }}` if you want adding your stylesheets in theme. For example:
 ```twig
 {% block corestyles %}
     {{ parent() }}
-    {% stylesheets output="css/components.min.css" filter="cssrewrite"
-    "components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
-    {% endstylesheets %}
 {% endblock %}
 ```
 
@@ -30,20 +26,25 @@ For example you can do it in /app/Resources/views/base.html.twig and all your vi
   Located in tag `<head>`. Use standard twig block stylesheets to include CSS that is used on single page.
 
 #### corejs
-  Located in tag `<head>`. Using for main theme JS, on prod environment all files will be merged in one `admin-lte-bundle.min.js`.
-  Please don't forget to use `{{ parent() }}` if you want adding your javascripts in theme. For example:
+  Located in tag `<head>`. Please don't forget to use `{{ parent() }}` if you want adding your javascripts in theme. For example:
 ```twig
 {% block corejs %}
     {{ parent() }}
-    {% javascripts output="js/components.min.js"
-    "components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js" %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 {% endblock %}
 ```
 
 #### javascripts_head
   Located in tag `<head>`. Using if we need add some javascript in head of page. You can use it to integrate modernizr.js or etc.
+
+#### fonts
+  Located in tag `<head>`. Using if we need add some font in head of page. Please don't forget to use `{{ parent() }}`. For example:
+```twig
+{% block fonts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ url }}">
+{% endblock %}
+```
 
 #### admin_lte_header
   Located in `<div class="wrapper">`. Contains admin_lte_navbar and admin_lte_logo blocks. It is not recommended to redefine.

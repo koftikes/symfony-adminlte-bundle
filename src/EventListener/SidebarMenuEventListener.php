@@ -14,7 +14,7 @@ class SidebarMenuEventListener
     /**
      * @param SidebarMenuEvent $event
      */
-    public function onShowMenu(SidebarMenuEvent $event)
+    public function onShowMenu(SidebarMenuEvent $event): void
     {
         foreach ($this->getMenu() as $item) {
             $event->addItem($item);

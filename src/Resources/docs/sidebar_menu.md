@@ -100,23 +100,6 @@ class SidebarMenuEventListener {
 ### Service
 Finally, you need to attach your new listener to the event system:
 
-_For Symfony 2.8.\*_
-
-```yaml
-# AppBundle/Resources/config/services.yml
-    app.menu_builder:
-        class: AppBundle\Component\MenuBuilder
-
-    app.sidebar_menu_listener:
-        class: AppBundle\EventListener\SidebarMenuEventListener
-        arguments:
-            - "@app.menu_builder"
-        tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
-```
-
-_For Symfony 3.4.\*_
-
 ```yaml
 # app/config/services.yml
     AppBundle\EventListener\SidebarMenuEventListener:
