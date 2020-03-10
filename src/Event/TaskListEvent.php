@@ -3,7 +3,7 @@
 namespace SbS\AdminLTEBundle\Event;
 
 use SbS\AdminLTEBundle\Model\TaskInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class TaskListEvent.

@@ -16,20 +16,25 @@
     ],
     "require": {
         "php": ">=7.2",
-        "symfony/symfony": "~3.4.35||~4.2.12",
-        "twig/extensions": "^1.5",
-        "almasaeed2010/adminlte": "^3.0"
+        "almasaeed2010/adminlte": "^3.0",
+        "symfony/config": "^4.4",
+        "symfony/console": "^4.4",
+        "symfony/event-dispatcher" : "^4.4",
+        "symfony/framework-bundle": "^4.4",
+        "symfony/security-bundle": "^4.4",
+        "symfony/twig-bundle": "^4.4",
+        "symfony/yaml": "^4.4"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.11",
-        "friendsofphp/php-cs-fixer": "2.16.0"
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
         "psr-4": { "SbS\\AdminLTEBundle\\": "src/" }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "2.1.x-dev"
         }
     }
 }

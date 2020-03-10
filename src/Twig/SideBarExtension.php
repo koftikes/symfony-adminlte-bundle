@@ -58,7 +58,7 @@ class SideBarExtension extends AdminLTE_Extension
         }
 
         /** @var SidebarMenuEvent $menuEvent */
-        $menuEvent = $this->getDispatcher()->dispatch(ThemeEvents::SIDEBAR_MENU, new SidebarMenuEvent($request));
+        $menuEvent = $this->getDispatcher()->dispatch(new SidebarMenuEvent($request), ThemeEvents::SIDEBAR_MENU);
 
         return $environment->render('@SbSAdminLTE/SideBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }

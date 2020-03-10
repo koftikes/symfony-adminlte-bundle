@@ -3,8 +3,8 @@
 namespace SbS\AdminLTEBundle\Event;
 
 use SbS\AdminLTEBundle\Model\MenuItemInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class SidebarMenuEvent.

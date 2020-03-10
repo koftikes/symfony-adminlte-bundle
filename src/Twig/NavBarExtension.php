@@ -89,7 +89,7 @@ class NavBarExtension extends AdminLTE_Extension
         }
 
         /** @var NavbarMenuEvent $menuEvent */
-        $menuEvent = $this->getDispatcher()->dispatch(ThemeEvents::NAVBAR_MENU, new NavbarMenuEvent($request));
+        $menuEvent = $this->getDispatcher()->dispatch(new NavbarMenuEvent($request), ThemeEvents::NAVBAR_MENU);
 
         return $environment->render('@SbSAdminLTE/NavBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }
@@ -110,7 +110,7 @@ class NavBarExtension extends AdminLTE_Extension
         }
 
         /** @var NotificationListEvent $noticesEvent */
-        $noticesEvent = $this->getDispatcher()->dispatch(ThemeEvents::NOTICES, new NotificationListEvent());
+        $noticesEvent = $this->getDispatcher()->dispatch(new NotificationListEvent(), ThemeEvents::NOTICES);
 
         return $environment->render('@SbSAdminLTE/NavBar/notifications.html.twig', [
             'notifications' => $noticesEvent->getNotifications(),
@@ -134,7 +134,7 @@ class NavBarExtension extends AdminLTE_Extension
         }
 
         /** @var TaskListEvent $tasksEvent */
-        $tasksEvent = $this->getDispatcher()->dispatch(ThemeEvents::TASKS, new TaskListEvent());
+        $tasksEvent = $this->getDispatcher()->dispatch(new TaskListEvent(), ThemeEvents::TASKS);
 
         return $environment->render('@SbSAdminLTE/NavBar/tasks.html.twig', [
             'tasks' => $tasksEvent->getTasks(),
@@ -158,7 +158,7 @@ class NavBarExtension extends AdminLTE_Extension
         }
 
         /** @var UserEvent $userEvent */
-        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::USER, new UserEvent());
+        $userEvent = $this->getDispatcher()->dispatch(new UserEvent(), ThemeEvents::USER);
 
         return $environment->render('@SbSAdminLTE/NavBar/user.html.twig', ['user' => $userEvent->getUser()]);
     }

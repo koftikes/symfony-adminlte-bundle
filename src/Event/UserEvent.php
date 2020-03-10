@@ -3,7 +3,7 @@
 namespace SbS\AdminLTEBundle\Event;
 
 use SbS\AdminLTEBundle\Model\UserInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class UserEvent.
