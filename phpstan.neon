@@ -1,3 +1,4 @@
 parameters:
-	excludes_analyse:
-		- %currentWorkingDirectory%/src/Composer/ScriptHandler.php
+    checkMissingIterableValueType: false
+    excludes_analyse:
+        - %currentWorkingDirectory%/src/Composer/ScriptHandler.php

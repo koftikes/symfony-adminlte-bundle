@@ -60,18 +60,6 @@ class NotificationListEventListener {
 ### Service
 Finally, you need to attach your new listener to the event system:
 
-_For Symfony 2.8.\*_
-
-```yaml
-# AppBundle/Resources/config/services.yml
-    app.tasks_listener:
-        class: AppBundle\EventListener\NotificationListEventListener
-        tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
-```
-
-_For Symfony 3.4.\*_
-
 ```yaml
 # app/config/services.yml
     AppBundle\EventListener\NotificationListEventListener:

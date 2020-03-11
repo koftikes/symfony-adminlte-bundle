@@ -16,13 +16,12 @@
     ],
     "require": {
         "php": ">=7.2",
-        "symfony/symfony": "~3.4.35||~4.2.12",
-        "twig/extensions": "^1.5",
-        "almasaeed2010/adminlte": "^3.0"
+        "almasaeed2010/adminlte": "^3.0",
+        "symfony/symfony": "~3.4.35"
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.11",
-        "friendsofphp/php-cs-fixer": "2.16.0"
+        "phpstan/phpstan": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
         "psr-4": { "SbS\\AdminLTEBundle\\": "src/" }

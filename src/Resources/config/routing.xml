@@ -8,7 +8,7 @@
         <default key="_controller">SbS\AdminLTEBundle\Controller\SideBarController::collapse</default>
     </route>
 
-    <!-- Demo Routing -->
+    <!-- Demo Routing
     <route id="sbs_adminlte_all_notifications" path="/notifications" methods="GET">
         <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\NotificationController::main</default>
     </route>
@@ -29,5 +29,5 @@
     <route id="sbs_adminlte_user_logout" path="/logout" methods="GET">
         <default key="_controller">SbS\AdminLTEBundle\Controller\Demo\UserController::logout</default>
     </route>
-    <!-- -->
+    -->
 </routes>
