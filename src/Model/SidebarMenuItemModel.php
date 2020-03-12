@@ -5,7 +5,7 @@ namespace SbS\AdminLTEBundle\Model;
 /**
  * Class SidebarMenuItemModel.
  */
-class SidebarMenuItemModel extends MenuItemModel implements MenuItemInterface, SidebarMenuItemInterface
+class SidebarMenuItemModel extends MenuItemModel implements SidebarMenuItemInterface
 {
     /**
      * @var array
