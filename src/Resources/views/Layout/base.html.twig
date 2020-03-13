@@ -7,7 +7,7 @@
     <title>{% block title %}AdminLTE 3{% endblock %}</title>
     {# Tell the browser to be responsive to screen width #}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block favicons %}
+    {% block favicon %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {% endblock %}
     {% block corestyles %}
@@ -97,8 +97,10 @@
                 <section class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
-                            <div class="col-sm-6">{{ macros.page_header("Page Title", "Description of Page") }}</div>
-                            <div class="col-sm-6">{% block admin_lte_breadcrumb %}{% endblock %}</div>
+                            <div class="col-sm-6">
+                                {% block page_header %}{{ macros.page_header("Page Title", "Description of Page") }}{% endblock %}
+                            </div>
+                            <div class="col-sm-6">{% block page_breadcrumb %}{% endblock %}</div>
                         </div>
                     </div>
                 </section>
@@ -110,8 +112,8 @@
         </div>
         {% block admin_lte_footer %}
             <footer class="main-footer">
-                <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.2</div>
-                <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+                <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.x</div>
+                <strong>Copyright &copy; 2014-{{ "now"|date("Y") }} <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
                 All rights reserved.
             </footer>
         {% endblock %}

@@ -68,20 +68,6 @@ class UserEventListener
 ### Service
 Finally, you need to attach your new listener to the event system:
 
-_For Symfony 2.8.\*_
-
-```yaml
-# AppBundle/Resources/config/services.yml
-    app.user_listener:
-        class: AppBundle\EventListener\UserEventListener
-        arguments:
-            - "@security.token_storage"
-        tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
-```
-
-_For Symfony 3.4.\*_
-
 ```yaml
 # app/config/services.yml
     AppBundle\EventListener\UserEventListener:

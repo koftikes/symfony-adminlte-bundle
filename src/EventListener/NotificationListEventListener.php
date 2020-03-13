@@ -14,7 +14,7 @@ class NotificationListEventListener
     /**
      * @param NotificationListEvent $event
      */
-    public function onListNotifications(NotificationListEvent $event)
+    public function onListNotifications(NotificationListEvent $event): void
     {
         foreach ($this->getNotifications() as $notify) {
             $event->addNotification($notify);

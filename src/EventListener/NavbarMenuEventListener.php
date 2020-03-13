@@ -14,7 +14,7 @@ class NavbarMenuEventListener
     /**
      * @param NavbarMenuEvent $event
      */
-    public function onShowMenu(NavbarMenuEvent $event)
+    public function onShowMenu(NavbarMenuEvent $event): void
     {
         foreach ($this->getMenu() as $item) {
             $event->addItem($item);

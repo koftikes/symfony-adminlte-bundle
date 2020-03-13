@@ -3,17 +3,18 @@
 The bundle are designed to support an unlimited depth the sidebar menu. Also it supports all styles of the side menu AdminLTE Template.
 
 ### Data Model
-In order to use this component, your have to create each menu item using MenuItemModel class `SbS\AdminLTEBundle\Model\MenuItemModel`. This class provide auto generate menu `id` for compatibility with JS and CSS.
+In order to use this component, your have to create each menu item using SidebarMenuItemModel class `SbS\AdminLTEBundle\Model\SidebarMenuItemModel`.
+This class provides an auto-generated menu `id` for compatibility with JS and CSS.
 
-If you want (for some reason) to use personal id your have to create a MenuItemModel class that implements the `SbS\AdminLTEBundle\Model\MenuItemInterface`
+If you want (for some reason) to use personal id you have to create a SidebarMenuItemModel class that implements the `SbS\AdminLTEBundle\Model\SidebarMenuItemInterface`
 
 ```php
 <?php
 namespace AppBundle\Model;
 
-use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface as ThemeMenuItem
+use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface;
 
-class MenuItemModel implements ThemeMenuItem {
+class SidebarMenuItemModel implements SidebarMenuItemInterface {
     // ...
     // implement interface methods
     // ...
@@ -21,16 +22,16 @@ class MenuItemModel implements ThemeMenuItem {
 ```
 
 ### MenuBuilder
-As recommendations you can create own class to building menu. Also you can check permissions to show some item menu in that class.
+As for recommendations, you can create own class for building a menu. Also, you can check permissions to show some item menu in that class.
 
 ```php
 <?php
 namespace AppBundle\Component;
 
+use SbS\AdminLTEBundle\Model\MenuItemInterface;
 use SbS\AdminLTEBundle\Model\SidebarMenuItemModel;
-use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface;
 
-class MenuBuilder {
+class SidebarMenuBuilder {
 
     public function getMenu() {
 
@@ -41,7 +42,7 @@ class MenuBuilder {
         $item_info = (new SidebarMenuItemModel('Information'))
             ->setRoute('sbs_adminlte_all_notifications')
             ->setIcon('fa fa-circle-o text-blue')
-            ->addBadge('17', SidebarMenuItemInterface::COLOR_RED)
+            ->addBadge('17', MenuItemInterface::COLOR_RED)
             ->addBadge('new');
 
         // Multi Level Menu
@@ -77,13 +78,14 @@ Next, you will need to create an EventListener to work with the `onShowMenu`
 <?php
 namespace AppBundle\EventListener;
 
-use AppBundle\Component\MenuBuilder;
+use AppBundle\Component\SidebarMenuBuilder;
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
-use SbS\AdminLTEBundle\Model\SidebarMenuItemModel;
 
 class SidebarMenuEventListener {
 
-    public function __construct(MenuBuilder $builder)
+    protected $builder;
+
+    public function __construct(SidebarMenuBuilder $builder)
     {
         $this->builder = $builder;
     }
@@ -99,23 +101,6 @@ class SidebarMenuEventListener {
 
 ### Service
 Finally, you need to attach your new listener to the event system:
-
-_For Symfony 2.8.\*_
-
-```yaml
-# AppBundle/Resources/config/services.yml
-    app.menu_builder:
-        class: AppBundle\Component\MenuBuilder
-
-    app.sidebar_menu_listener:
-        class: AppBundle\EventListener\SidebarMenuEventListener
-        arguments:
-            - "@app.menu_builder"
-        tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
-```
-
-_For Symfony 3.4.\*_
 
 ```yaml
 # app/config/services.yml

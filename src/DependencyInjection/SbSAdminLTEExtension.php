@@ -19,7 +19,7 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(\dirname(__DIR__) . '/Resources/config'));
         $loader->load('services.xml');
@@ -34,7 +34,7 @@ class SbSAdminLTEExtension extends Extension implements PrependExtensionInterfac
      *
      * @param ContainerBuilder $container
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $bundles = $container->getParameter('kernel.bundles');
 

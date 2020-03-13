@@ -13,7 +13,7 @@ class TaskListEventListener
     /**
      * @param TaskListEvent $event
      */
-    public function onListTasks(TaskListEvent $event)
+    public function onListTasks(TaskListEvent $event): void
     {
         foreach ($this->getTasks() as $task) {
             $event->addTask($task);

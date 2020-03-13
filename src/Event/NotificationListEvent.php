@@ -42,10 +42,14 @@ class NotificationListEvent extends Event
 
     /**
      * @param int $total
+     *
+     * @return $this
      */
     public function setTotal($total)
     {
         $this->total = $total;
+
+        return $this;
     }
 
     /**
