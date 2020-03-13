@@ -21,7 +21,7 @@ In order to use this component, your Task class has to implement the `SbS\AdminL
 
 ```php
 <?php
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use SbS\AdminLTEBundle\Model\TaskInterface;
 
@@ -37,7 +37,7 @@ Next, you will need to create an EventListener to work with the `onListTasks`
 
 ```php
 <?php
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
 class TaskListEventListener {
 
@@ -61,8 +61,8 @@ class TaskListEventListener {
 Finally, you need to attach your new listener to the event system:
 
 ```yaml
-# app/config/services.yml
-    AppBundle\EventListener\TaskListEventListener:
+# config/services.yml
+    App\EventListener\TaskListEventListener:
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.tasks, method: onListTasks }
 ```

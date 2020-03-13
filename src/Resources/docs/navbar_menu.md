@@ -10,7 +10,7 @@ If you want (for some reason) to use personal id you have to create a NavbarMenu
 
 ```php
 <?php
-namespace AppBundle\Model;
+namespace App\Model;
 
 use SbS\AdminLTEBundle\Model\MenuItemInterface;
 
@@ -26,7 +26,7 @@ As for recommendations, you can create own class for building a menu. Also, you 
 
 ```php
 <?php
-namespace AppBundle\Component;
+namespace App\Component;
 
 use SbS\AdminLTEBundle\Model\MenuItemModel;
 use SbS\AdminLTEBundle\Model\MenuItemInterface;
@@ -64,9 +64,9 @@ Next, you will need to create an EventListener to work with the `onShowMenu`
 
 ```php
 <?php
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
-use AppBundle\Component\NavbarMenuBuilder;
+use App\Component\NavbarMenuBuilder;
 use SbS\AdminLTEBundle\Event\NavbarMenuEvent;
 
 class NavbarMenuEventListener {
@@ -91,8 +91,8 @@ class NavbarMenuEventListener {
 Finally, you need to attach your new listener to the event system:
 
 ```yaml
-# app/config/services.yml
-    AppBundle\EventListener\NavbarMenuEventListener:
+# config/services.yaml
+    App\EventListener\NavbarMenuEventListener:
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.navbar_menu, method: onShowMenu }
 ```

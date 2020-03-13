@@ -2,6 +2,9 @@
 
 ### As recommendations you can use [FOSUserBundle][1].
 
+At the moment not exist documentations for installations this bundle to Symfony 4.4 and higher.
+This is should help you: [How to install and configure FOSUserBundle in Symfony 4](src/Resources/docs/fos_installation.md)
+
 ### Routes
 This component requires some route names to work.
 
@@ -24,7 +27,7 @@ In order to use this component, your User class has to implement the `SbS\AdminL
 
 ```php
 <?php
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use SbS\AdminLTEBundle\Model\UserInterface as ThemeUser
 
@@ -40,7 +43,7 @@ Next, you will need to create an EventListener to work with the `onShowUser`
 
 ```php
 <?php
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
 use SbS\AdminLTEBundle\Event\UserEvent;
 use SbS\AdminLTEBundle\Model\UserInterface;
@@ -69,10 +72,10 @@ class UserEventListener
 Finally, you need to attach your new listener to the event system:
 
 ```yaml
-# app/config/services.yml
-    AppBundle\EventListener\UserEventListener:
+# config/services.yml
+    App\EventListener\UserEventListener:
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
 ```
 
-[1]: https://symfony.com/doc/master/bundles/FOSUserBundle/index.html
+[1]: https://github.com/FriendsOfSymfony/FOSUserBundle

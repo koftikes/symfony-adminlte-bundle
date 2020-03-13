@@ -21,7 +21,7 @@ In order to use this component, your Notification class has to implement the `Sb
 
 ```php
 <?php
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use SbS\AdminLTEBundle\Model\NotificationInterface;
 
@@ -37,7 +37,7 @@ Next, you will need to create an EventListener to work with the `onListNotificat
 
 ```php
 <?php
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
 class NotificationListEventListener {
 
@@ -61,8 +61,8 @@ class NotificationListEventListener {
 Finally, you need to attach your new listener to the event system:
 
 ```yaml
-# app/config/services.yml
-    AppBundle\EventListener\NotificationListEventListener:
+# config/services.yml
+    App\EventListener\NotificationListEventListener:
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
 ```

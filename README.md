@@ -3,23 +3,28 @@
 [![Total Downloads](https://poser.pugx.org/sbs/symfony-adminlte-bundle/downloads)](https://packagist.org/packages/sbs/symfony-adminlte-bundle)
 [![License](https://poser.pugx.org/sbs/symfony-adminlte-bundle/license)](LICENSE)
 
-# AdminLTE Bundle for Symfony 3.4
+# AdminLTE Bundle for Symfony 3.4/4.4
 
 AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony. This bundle integrates several commonly used JavaScripts and Font-Awesome.
+
+- Since version 2.0.x start to use AdminLTE 3.0
+- Since version 2.1.x start to support Symfony 4.4
+- All version a required PHP 7.2 and higher
+- All version a required Symfony Twig Bundle
 
 ## Compatibility and Requirements:
 
 ### Version 1.5.x
 - Compatible only with Symfony 3.4.x. Composer is locked to ~3.4.35.
 - Provide a AdminLTE version 2.4.x. Composer is locked to ~2.4
-- PHP >= 7.2 is required.
-- Twig ^2.0
 
 ### Version 2.0.x
 - Compatible only with Symfony 3.4.x. Composer is locked to ~3.4.35.
 - Provide a AdminLTE version 3.0. Composer is locked to ^3.0 - NEW!!!
-- PHP >= 7.2 is required.
-- Twig ^2.0
+
+### Version 2.1.x
+- Compatible only with Symfony 4.4.x. Composer is locked to ^4.4.
+- Provide a AdminLTE version 3.0. Composer is locked to ^3.0
 
 ## Documentation
 

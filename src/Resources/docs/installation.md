@@ -1,53 +1,60 @@
 ## Installation
 
-Installation using composer is really easy. 
-Just run next composer command for download and install `sbs/symfony-adminlte-bundle`:
+Before run composer command you need allow contrib in project composer.json:
 
-    composer require "sbs/symfony-adminlte-bundle":"2.0.*"
+```json
+"extra": {
+    "symfony": {
+        "allow-contrib": true,
+        ...
+    }
+}
+```
+After that run next composer command for download and install `sbs/symfony-adminlte-bundle`:
+
+    composer require "sbs/symfony-adminlte-bundle":"2.1.*"
 
 ## Configurations
 
-Enable the bundle in your kernel:
+Bundle will be enable with auto-generated recipe. Your `config/bundles.php` start to be next:
 
 ```php
+// config/bundles.php
 <?php
-// app/AppKernel.php
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new SbS\AdminLTEBundle\SbSAdminLTEBundle(),
-        new AppBundle\AppBundle(),
-    );
-}
+
+return [
+    // ...
+    SbS\AdminLTEBundle\SbSAdminLTEBundle::class => ['all' => true],
+];
 ```
 
 Configure composer.json to install AdminLTE assets into bundle public directory.
 
-_Notice: insert line before `Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets`_
+_Notice: insert line before `"assets:install %PUBLIC_DIR%": "symfony-cmd"`_
 
 ```json
 "scripts": {
-    "symfony-scripts": [
-        "SbS\\AdminLTEBundle\\Composer\\ScriptHandler::buildAssets",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-    ],
+    "auto-scripts": {
+        "cache:clear": "symfony-cmd",
+        "sbs:admin-lte:build-assets": "symfony-cmd",
+        "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
     "post-install-cmd": [
-        "@symfony-scripts"
+        "@auto-scripts"
     ],
     "post-update-cmd": [
-        "@symfony-scripts"
+        "@auto-scripts"
     ]
 },
 ```
 
-Add the following lines at `app/config/routing.yml`:
+Add the following lines at `config/routes.yaml`:
 
     sbs_adminlte:
         resource: "@SbSAdminLTEBundle/Resources/config/routing.xml"
 
 
-Added to `framework` section  at `app/config/config.yml`._
+Added to `framework` section  at `config/packages/framework.yaml`._
 
     framework:
         # ...

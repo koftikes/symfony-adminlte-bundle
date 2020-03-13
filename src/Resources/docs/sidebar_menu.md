@@ -10,7 +10,7 @@ If you want (for some reason) to use personal id you have to create a SidebarMen
 
 ```php
 <?php
-namespace AppBundle\Model;
+namespace App\Model;
 
 use SbS\AdminLTEBundle\Model\SidebarMenuItemInterface;
 
@@ -26,7 +26,7 @@ As for recommendations, you can create own class for building a menu. Also, you 
 
 ```php
 <?php
-namespace AppBundle\Component;
+namespace App\Component;
 
 use SbS\AdminLTEBundle\Model\MenuItemInterface;
 use SbS\AdminLTEBundle\Model\SidebarMenuItemModel;
@@ -76,9 +76,9 @@ Next, you will need to create an EventListener to work with the `onShowMenu`
 
 ```php
 <?php
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
-use AppBundle\Component\SidebarMenuBuilder;
+use App\Component\SidebarMenuBuilder;
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
 
 class SidebarMenuEventListener {
@@ -103,8 +103,8 @@ class SidebarMenuEventListener {
 Finally, you need to attach your new listener to the event system:
 
 ```yaml
-# app/config/services.yml
-    AppBundle\EventListener\SidebarMenuEventListener:
+# config/services.yml
+    App\EventListener\SidebarMenuEventListener:
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
 ```
