@@ -106,5 +106,5 @@ Finally, you need to attach your new listener to the event system:
 # config/services.yml
     App\EventListener\SidebarMenuEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
+            - { name: kernel.event_listener, method: onShowMenu }
 ```

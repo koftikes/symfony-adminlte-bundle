@@ -64,5 +64,5 @@ Finally, you need to attach your new listener to the event system:
 # config/services.yml
     App\EventListener\NotificationListEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
+            - { name: kernel.event_listener, method: onListNotifications }
 ```

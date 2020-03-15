@@ -17,7 +17,7 @@ You could use the following route stubs with your `routing.yml`
 # app/config/routing.yml
 sbs_adminlte_user_profile:
     path: /user/profile
-    defaults: {_controller: AppBundle:Profile:main}
+    controller: App\Controller\UserProfile:main
 sbs_adminlte_user_logout:
     path: /logout
 ```
@@ -75,7 +75,7 @@ Finally, you need to attach your new listener to the event system:
 # config/services.yml
     App\EventListener\UserEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
+            - { name: kernel.event_listener, method: onShowUser }
 ```
 
 [1]: https://github.com/FriendsOfSymfony/FOSUserBundle

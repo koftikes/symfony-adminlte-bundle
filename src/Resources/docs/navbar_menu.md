@@ -1,6 +1,6 @@
 ## Navbar Menu Component
 
-Since AdminLTE version 3.0.x bundle support two menus: SidebarMenu and NavbarMenu. For now, this menu doesn't support sub menu items.
+Since AdminLTE version 3.0.x bundle support two menus: SidebarMenu and NavbarMenu (doesn't support sub menu items).
 
 ### Data Model
 In order to use this component, your have to create each menu item using MenuItemModel class `SbS\AdminLTEBundle\Model\MenuItemModel`.
@@ -94,5 +94,5 @@ Finally, you need to attach your new listener to the event system:
 # config/services.yaml
     App\EventListener\NavbarMenuEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.navbar_menu, method: onShowMenu }
+            - { name: kernel.event_listener, method: onShowMenu }
 ```

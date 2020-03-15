@@ -64,5 +64,5 @@ Finally, you need to attach your new listener to the event system:
 # config/services.yml
     App\EventListener\TaskListEventListener:
         tags:
-            - { name: kernel.event_listener, event: sbs.admin_lte.tasks, method: onListTasks }
+            - { name: kernel.event_listener, method: onListTasks }
 ```

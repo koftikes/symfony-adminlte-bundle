@@ -3,7 +3,6 @@
 namespace SbS\AdminLTEBundle\Twig;
 
 use SbS\AdminLTEBundle\Event\SidebarMenuEvent;
-use SbS\AdminLTEBundle\Event\ThemeEvents;
 use Symfony\Bridge\Twig\Extension\RoutingExtension;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
@@ -53,12 +52,12 @@ class SideBarExtension extends AdminLTE_Extension
      */
     public function sidebarMenu(Environment $environment, Request $request)
     {
-        if (false === $this->checkListener(ThemeEvents::SIDEBAR_MENU)) {
+        if (false === $this->checkListener(SidebarMenuEvent::class)) {
             return '';
         }
 
         /** @var SidebarMenuEvent $menuEvent */
-        $menuEvent = $this->getDispatcher()->dispatch(new SidebarMenuEvent($request), ThemeEvents::SIDEBAR_MENU);
+        $menuEvent = $this->getDispatcher()->dispatch(new SidebarMenuEvent($request));
 
         return $environment->render('@SbSAdminLTE/SideBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }

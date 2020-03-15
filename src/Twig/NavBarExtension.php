@@ -5,7 +5,6 @@ namespace SbS\AdminLTEBundle\Twig;
 use SbS\AdminLTEBundle\Event\NavbarMenuEvent;
 use SbS\AdminLTEBundle\Event\NotificationListEvent;
 use SbS\AdminLTEBundle\Event\TaskListEvent;
-use SbS\AdminLTEBundle\Event\ThemeEvents;
 use SbS\AdminLTEBundle\Event\UserEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,12 +82,12 @@ class NavBarExtension extends AdminLTE_Extension
      */
     public function navbarMenu(Environment $environment, Request $request)
     {
-        if (false === $this->checkListener(ThemeEvents::NAVBAR_MENU)) {
+        if (false === $this->checkListener(NavbarMenuEvent::class)) {
             return '';
         }
 
         /** @var NavbarMenuEvent $menuEvent */
-        $menuEvent = $this->getDispatcher()->dispatch(new NavbarMenuEvent($request), ThemeEvents::NAVBAR_MENU);
+        $menuEvent = $this->getDispatcher()->dispatch(new NavbarMenuEvent($request));
 
         return $environment->render('@SbSAdminLTE/NavBar/menu.html.twig', ['menu' => $menuEvent->getItems()]);
     }
@@ -104,12 +103,12 @@ class NavBarExtension extends AdminLTE_Extension
      */
     public function showNotifications(Environment $environment)
     {
-        if (false === $this->checkListener(ThemeEvents::NOTICES)) {
+        if (false === $this->checkListener(NotificationListEvent::class)) {
             return '';
         }
 
         /** @var NotificationListEvent $noticesEvent */
-        $noticesEvent = $this->getDispatcher()->dispatch(new NotificationListEvent(), ThemeEvents::NOTICES);
+        $noticesEvent = $this->getDispatcher()->dispatch(new NotificationListEvent());
 
         return $environment->render('@SbSAdminLTE/NavBar/notifications.html.twig', [
             'notifications' => $noticesEvent->getNotifications(),
@@ -128,12 +127,12 @@ class NavBarExtension extends AdminLTE_Extension
      */
     public function showTasks(Environment $environment)
     {
-        if (false === $this->checkListener(ThemeEvents::TASKS)) {
+        if (false === $this->checkListener(TaskListEvent::class)) {
             return '';
         }
 
         /** @var TaskListEvent $tasksEvent */
-        $tasksEvent = $this->getDispatcher()->dispatch(new TaskListEvent(), ThemeEvents::TASKS);
+        $tasksEvent = $this->getDispatcher()->dispatch(new TaskListEvent());
 
         return $environment->render('@SbSAdminLTE/NavBar/tasks.html.twig', [
             'tasks' => $tasksEvent->getTasks(),
@@ -152,12 +151,12 @@ class NavBarExtension extends AdminLTE_Extension
      */
     public function showUserAccount(Environment $environment)
     {
-        if (false === $this->checkListener(ThemeEvents::USER)) {
+        if (false === $this->checkListener(UserEvent::class)) {
             return '';
         }
 
         /** @var UserEvent $userEvent */
-        $userEvent = $this->getDispatcher()->dispatch(new UserEvent(), ThemeEvents::USER);
+        $userEvent = $this->getDispatcher()->dispatch(new UserEvent());
 
         return $environment->render('@SbSAdminLTE/NavBar/user.html.twig', ['user' => $userEvent->getUser()]);
     }
