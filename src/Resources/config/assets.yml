@@ -54,7 +54,7 @@ components:
     - "/bower_components/morris.js"
     - "/bower_components/PACE"
     - "/bower_components/raphael"
-    - "/bower_components/seiyria-bootstrap-slider"
+#    - "/bower_components/seiyria-bootstrap-slider"
     - "/bower_components/select2"
 
 plugins:
