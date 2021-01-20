@@ -1,4 +1,7 @@
 parameters:
     checkMissingIterableValueType: false
+    level: max
+    paths:
+        - src
     excludes_analyse:
         - %currentWorkingDirectory%/src/Composer/ScriptHandler.php
