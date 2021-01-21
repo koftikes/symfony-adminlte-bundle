@@ -2,15 +2,12 @@
 
 Installation using composer is really easy:
 
-_Notice: If you want use AdminLTE theme latest then 2.4.3, you need add next config to your composer,json:_
+First of all, you need add next config to your composer,json:
 ```json
 "repositories": [
     {"type": "composer", "url": "https://asset-packagist.org"}
 ],
 ```
-_And install `bower-asset/jquery` package:_
-
-    composer require "bower-asset/jquery":">=1.9.0 <4.0.0"
 
 Next composer command download and install `sbs/symfony-adminlte-bundle` bundle to your composer.json:
 
@@ -18,6 +15,11 @@ Next composer command download and install `sbs/symfony-adminlte-bundle` bundle 
 
 ## Configurations
 
+_Notice: Depending on the way, how you create a project, Symfony provides a different structure of files._
+
+### Configurations for `symfony/website-skeleton` or `symfony/skeleton`
+
+### Configurations for `symfony/framework-standard-edition`
 Enable the bundle in your kernel:
 
 ```php
@@ -58,7 +60,7 @@ Add the following lines at `app/config/routing.yml`:
         resource: "@SbSAdminLTEBundle/Resources/config/routing.xml"
 
 
-Added to `framework` section  at `app/config/config.yml`._
+Added to `framework` section  at `app/config/config.yml`:
 
     framework:
         # ...

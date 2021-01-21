@@ -16,17 +16,22 @@
     ],
     "require": {
         "php": ">=7.2",
-        "almasaeed2010/adminlte": "~2.4",
-        "symfony/console": "~3.4.35",
-        "symfony/event-dispatcher": "~3.4.35",
-        "symfony/framework-bundle": "~3.4.35",
-        "symfony/twig-bundle": "~3.4.35",
-        "symfony/yaml": "~3.4.35"
+        "almasaeed2010/adminlte": "2.4.*",
+        "bower-asset/jquery": ">=1.9 <4.0",
+        "symfony/asset": "3.4.*",
+        "symfony/console": "3.4.*",
+        "symfony/event-dispatcher": "3.4.*",
+        "symfony/framework-bundle": "3.4.*",
+        "symfony/security-bundle": "3.4.*",
+        "symfony/twig-bundle": "3.4.*",
+        "symfony/yaml": "3.4.*"
     },
     "require-dev": {
-        "bower-asset/jquery": ">=1.9 <4.0",
         "phpstan/phpstan": "^0.12",
         "friendsofphp/php-cs-fixer": "^2.18"
+    },
+    "conflict": {
+        "almasaeed2010/adminlte": "<2.4.4"
     },
     "repositories": [
         {"type": "composer", "url": "https://asset-packagist.org"}

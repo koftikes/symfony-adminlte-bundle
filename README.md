@@ -10,8 +10,8 @@ AdminLTE Bundle based on the AdminLTE Template for easy integration into Symfony
 ## Compatibility and Requirements:
 
 ### Version 1.5.x
-- Compatible only with Symfony 3.4.x. Composer is locked to ~3.4.35.
-- Provide a AdminLTE only 2.4.x. Composer is locked to ~2.4
+- Compatible only with Symfony 3.4.x. Composer is locked to 3.4.*.
+- Provide a AdminLTE only 2.4.x. Composer is locked to >=2.4.4
 - PHP >= 7.2 is required.
 - Twig ^2.0
 
