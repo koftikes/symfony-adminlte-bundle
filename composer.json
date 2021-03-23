@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "almasaeed2010/adminlte": "^3.0",
+        "almasaeed2010/adminlte": "^3.1",
         "symfony/config": "^4.4",
         "symfony/console": "^4.4",
         "symfony/event-dispatcher" : "^4.4",
