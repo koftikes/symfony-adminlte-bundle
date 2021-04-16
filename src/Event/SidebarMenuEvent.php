@@ -48,7 +48,7 @@ class SidebarMenuEvent extends Event
      */
     public function getItems()
     {
-        return $this->activateByRoute($this->request->get('_route'), $this->menuItems);
+        return $this->activateByRoute($this->request->get('_route'), $this->menuItems, $this->request->get('_route_params'));
     }
 
     /**
@@ -57,14 +57,15 @@ class SidebarMenuEvent extends Event
      *
      * @return mixed
      */
-    protected function activateByRoute($route, $items)
+    protected function activateByRoute($route, $items, $routeParams = [])
     {
         /** @var SidebarMenuItemInterface $item */
         foreach ($items as $item) {
             if ($item->getChildren()) {
-                $this->activateByRoute($route, $item->getChildren());
+                $this->activateByRoute($route, $item->getChildren(), $routeParams);
             } else {
-                if ($item->getRoute() === $route) {
+                if ($item->getRoute() === $route && $item->getRouteArgs() == $routeParams) {
+
                     $item->setActive(true);
                 }
             }
